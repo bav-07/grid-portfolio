@@ -9,6 +9,10 @@ body, html {
   --g2: #520707;
   --g3: #11998e;
   --g4: #38ef7d;
+  --g5: #00d2ff;
+  --g6: #3a7bd5;
+  --g7: #654ea3;
+  --g8: #eaafc8;
 
 }
 
@@ -29,6 +33,8 @@ body, html {
     var(--g2)
   );
   background-size: 400%; */
+  transition: all;
+  transition-duration: 300;
   height: 100vh;
   overflow: hidden;
   margin: 0px;
