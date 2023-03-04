@@ -30,15 +30,44 @@ const TilesHeader = () => {
     
     const handleOnClick = index => {
         console.log(index);
-        anime({
-            targets: ".tile",
-            scale: [{value: 0.5, duration: 500},
-            {value: 1, duration: 500}],
-            delay: anime.stagger(100, {
-                grid: [columns, rows],
-                from: index
+
+        if (index === columns * 4 + 1  || index === columns * 6 + 1 || index === columns * 8 + 1) {
+            anime({
+                targets: ".tile",
+                scale: [{value: 1, duration: 0}],
+                delay: anime.stagger(0, {
+                    grid: [columns, rows],
+                    from: index
+                })
             })
-        })
+            anime({
+                targets: ".tile",
+                scale: [{value: 0.5, duration: 500},
+                {value: 1, duration: 500}],
+                delay: anime.stagger(50, {
+                    grid: [columns, rows],
+                    from: index
+                })
+            })
+        } else {
+            // anime({
+            //     targets: ".tile",
+            //     scale: [{value: 1, duration: 0}],
+            //     delay: anime.stagger(0, {
+            //         grid: [columns, rows],
+            //         from: index
+            //     })
+            // })
+            anime({
+                targets: ".tile",
+                scale: [{value: 0.92, duration: 300},
+                {value: 1, duration: 500}],
+                delay: anime.stagger(50, {
+                    grid: [columns, rows],
+                    from: index
+                })
+            })
+        }
     }
 
     return ( 
