@@ -1,11 +1,15 @@
 body, html {
   padding: 0px;
   margin: 0px;
+  /* cursor: none; */
 }
 
 :root {
   --g1: #DC0000;
-  --g2: #850000;
+  --g2: #520707;
+  --g3: #11998e;
+  --g4: #38ef7d;
+
 }
 
 @keyframes background-pan {
@@ -18,13 +22,13 @@ body, html {
 }
 
 .tiles {
-  animation: background-pan 5s linear infinite;
+  /* animation: background-pan 5s linear infinite;
   background: linear-gradient(
     -70deg,
     var(--g1),
     var(--g2)
   );
-  background-size: 400%;
+  background-size: 400%; */
   height: 100vh;
   overflow: hidden;
   margin: 0px;
@@ -37,15 +41,15 @@ body, html {
 
 .tile:before {
   /* background-color: rgb(20,20,20); */
-  opacity: 0.8;
+  opacity: 1;
   content: "";
   position: absolute;
-  transition: 0.2s ease;
+  /* transition: 0.2s ease; */
 }
 
 .tile:hover:before {
   opacity: 0.5;
-  transition: 0.2s ease;
+  /* transition: 0.2s ease; */
 }
 
 .tile:active:before {
