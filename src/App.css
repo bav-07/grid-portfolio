@@ -36,11 +36,10 @@ body, html {
 }
 
 .tile:before {
-  background-color: rgb(20,20,20);
+  /* background-color: rgb(20,20,20); */
   opacity: 0.8;
   content: "";
   position: absolute;
-  inset: 0.5px;
   transition: 0.2s ease;
 }
 
