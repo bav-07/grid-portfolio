@@ -1,6 +1,11 @@
 body, html {
   padding: 0px;
   margin: 0px;
+  background: linear-gradient(
+    -70deg,
+    rgb(20,20,20),
+    rgb(40,40,40)
+  )
   /* cursor: none; */
 }
 
@@ -16,12 +21,39 @@ body, html {
 
 }
 
-@keyframes background-pan {
+@keyframes background-pan-home {
   0%, 100% {
-    background-position: 0% 50%;
+    background-color: var(--g2);
   }
   50% {
-    background-position: 100% 50%;
+    background-color: var(--g1);
+  }
+}
+
+@keyframes background-pan-about {
+  0%, 100% {
+    background-color: var(--g4);
+  }
+  50% {
+    background-color: var(--g3);
+  }
+}
+
+@keyframes background-pan-projects {
+  0%, 100% {
+    background-color: var(--g6);
+  }
+  50% {
+    background-color: var(--g5);
+  }
+}
+
+@keyframes background-pan-contact {
+  0%, 100% {
+    background-color: var(--g8);
+  }
+  50% {
+    background-color: var(--g7);
   }
 }
 
@@ -33,7 +65,7 @@ body, html {
     var(--g2)
   );
   background-size: 400%; */
-  transition: all;
+  transition: background-color 0.3s ease;
   transition-duration: 300;
   height: 100vh;
   overflow: hidden;
@@ -43,6 +75,7 @@ body, html {
 .tile {
   position: relative;
   opacity: 0.9;
+  background-color: #00d2ff00;
 }
 
 .tile:before {

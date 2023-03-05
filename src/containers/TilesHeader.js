@@ -30,8 +30,72 @@ const TilesHeader = () => {
         }
     }
 
-    const handlePageChange = newState => {
-        const timeout = setTimeout(() => setPageState(newState), 500);
+    const handlePageChange = (index, newState) => {
+
+        anime({
+            targets: ".tile",
+            scale: [{value: 1, duration: 0}],
+            delay: anime.stagger(0, {
+                grid: [columns, rows],
+                from: index
+            })
+        })
+        anime({
+            targets: ".tile",
+            scale: [{value: 0.5, duration: 500},
+            {value: 1, duration: 500}],
+            delay: anime.stagger(50, {
+                grid: [columns, rows],
+                from: index
+            })
+        })
+
+        if (newState === "about") {
+            const timeout = setTimeout(() => anime({
+                targets: ".tile",
+                backgroundColor: [{value: `#11998e`, duration: 500}],
+                delay: anime.stagger({
+                    grid: [columns, rows],
+                    from: index
+                })
+            }), 500)
+        } else if (newState === "projects") {
+            const timeout = setTimeout(() => anime({
+                targets: ".tile",
+                backgroundColor: [{value: `#00d2ff`, duration: 500}],
+                delay: anime.stagger({
+                    grid: [columns, rows],
+                    from: index
+                })
+            }), 500)
+        } else if (newState === "contact") {
+            const timeout = setTimeout(() => anime({
+                targets: ".tile",
+                backgroundColor: [{value: `#654ea3`, duration: 500}],
+                delay: anime.stagger({
+                    grid: [columns, rows],
+                    from: index
+                })
+            }), 500)
+        } else {
+            const timeout = setTimeout(() => anime({
+                targets: ".tile",
+                backgroundColor: [{value: `#DC0000`, duration: 500}],
+                delay: anime.stagger({
+                    grid: [columns, rows],
+                    from: index
+                })
+            }), 500)
+        }
+        
+        
+        const timeout = setTimeout(() => setPageState(newState), 800);
+        
+        // const timeout1 = setTimeout(() => anime({
+        //     targets: ".tile",
+        //     backgroundColor: [{value: `#DC000000`, duration: 0}],
+        // }), 1000)
+
     }
     
     const handleOnClick = index => {
@@ -82,12 +146,13 @@ const TilesHeader = () => {
                 display: 'grid',
                 gridTemplateColumns: `repeat(${columns}, 1fr)`,
                 gridTemplateRows: `repeat(${rows}, 1fr)`,
-                animation: `background-pan 5s linear infinite`,
+                animation: `background-pan-${pageState} 5s linear infinite`,
                 background: `linear-gradient(
                     -70deg,
                     ${pageState === "" ? "var(--g1)" : pageState === "about" ? "var(--g3)" : pageState === "projects" ? "var(--g5)" : pageState === "contact" ? "var(--g7)" : "var(--g1)"},
                     ${pageState === "" ? "var(--g2)" : pageState === "about" ? "var(--g4)" : pageState === "projects" ? "var(--g6)" : pageState === "contact" ? "var(--g8)" : "var(--g1)"}
                 )`,
+                //backgroundColor: `${pageState === "" ? "var(--g1)" : pageState === "about" ? "var(--g3)" : pageState === "projects" ? "var(--g5)" : pageState === "contact" ? "var(--g7)" : "var(--g1)"}`,
                 backgroundSize: `400%`
             }}
             className={`tiles h-[100vh] w-[100vw]`}>
@@ -98,25 +163,27 @@ const TilesHeader = () => {
                     
                     onClick={(e) => 
                     
-                    index === columns * 3 + 1 ? handleOnClick(index) : handleOnClick(index)
+                    index === columns * 4 + 1 ? handlePageChange(index, "about") :
+                    index === columns * 6 + 1 ? handlePageChange(index, "projects") :
+                    index === columns * 8 + 1 ? handlePageChange(index, "contact") : ""
                 
                 }s>
-                    {index === columns * 4 + 1 ? <p onClick={() => handlePageChange("about")} className='absolute text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 transition-transform duration-150'><IoSquareSharp/></p> : ""}
-                    {index === columns * 6 + 1 ? <p onClick={() => handlePageChange("projects")} className='absolute text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 transition-transform duration-150'><IoSquareSharp/></p> : ""}
-                    {index === columns * 8 + 1 ? <p onClick={() => handlePageChange("contact")} className='absolute text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 transition-transform duration-150'><IoSquareSharp/></p> : ""}
+                    {index === columns * 4 + 1 ? <p className='absolute text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 transition-transform duration-150'><IoSquareSharp/></p> : ""}
+                    {index === columns * 6 + 1 ? <p className='absolute text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 transition-transform duration-150'><IoSquareSharp/></p> : ""}
+                    {index === columns * 8 + 1 ? <p className='absolute text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 transition-transform duration-150'><IoSquareSharp/></p> : ""}
                     
-                    {index === columns + 1 ? <p onClick={() => handlePageChange("")}  className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>B</p> : 
-                    index === columns + 2 ? <p onClick={() => handlePageChange("")}  className='absolute text-white font-["Orbitron"] font-[900]  text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>a</p> :
-                    index === columns + 3 ? <p onClick={() => handlePageChange("")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>v</p> :
-                    index === columns * 2 + 1 ? <p onClick={() => handlePageChange("")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>N</p> :
-                    index === columns * 2 + 2 ? <p onClick={() => handlePageChange("")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>a</p> :
-                    index === columns * 2 + 3 ? <p onClick={() => handlePageChange("")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>g</p> :
-                    index === columns * 2 + 4 ? <p onClick={() => handlePageChange("")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>a</p> :
-                    index === columns * 2 + 5 ? <p onClick={() => handlePageChange("")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>r</p> :
-                    index === columns * 2 + 6 ? <p onClick={() => handlePageChange("")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>a</p> :
-                    index === columns * 2 + 7 ? <p onClick={() => handlePageChange("")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>j</p> :
-                    index === columns * 2 + 8 ? <p onClick={() => handlePageChange("")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>a</p> :
-                    index === columns * 2 + 9 ? <p onClick={() => handlePageChange("")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>h</p> : ""
+                    {index === columns + 1 ? <p onClick={() => handlePageChange(index, "")}  className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>B</p> : 
+                    index === columns + 2 ? <p onClick={() => handlePageChange(index, "")}  className='absolute text-white font-["Orbitron"] font-[900]  text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>a</p> :
+                    index === columns + 3 ? <p onClick={() => handlePageChange(index, "")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>v</p> :
+                    index === columns * 2 + 1 ? <p onClick={() => handlePageChange(index, "")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>N</p> :
+                    index === columns * 2 + 2 ? <p onClick={() => handlePageChange(index, "")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>a</p> :
+                    index === columns * 2 + 3 ? <p onClick={() => handlePageChange(index, "")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>g</p> :
+                    index === columns * 2 + 4 ? <p onClick={() => handlePageChange(index, "")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>a</p> :
+                    index === columns * 2 + 5 ? <p onClick={() => handlePageChange(index, "")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>r</p> :
+                    index === columns * 2 + 6 ? <p onClick={() => handlePageChange(index, "")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>a</p> :
+                    index === columns * 2 + 7 ? <p onClick={() => handlePageChange(index, "")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>j</p> :
+                    index === columns * 2 + 8 ? <p onClick={() => handlePageChange(index, "")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>a</p> :
+                    index === columns * 2 + 9 ? <p onClick={() => handlePageChange(index, "")} className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>h</p> : ""
                     }
 
                     {index === columns * (rows - 2) + 1 ? <p className='absolute text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 transition-transform duration-150'><IoLogoGithub/></p> : ""}
