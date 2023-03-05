@@ -89,17 +89,28 @@ const TilesHeader = () => {
             }), 500)
         }
         
+        if (document.body.clientWidth <= 560) {
+            const timeout = setTimeout(() => setPageState(newState), 50*rows + 500 );
+            const timeout1 = setTimeout(() => anime({
+                targets: ".tile",
+                backgroundColor: [{value: `rgb(0,0,0,0)`}],
+                delay: anime.stagger(50, {
+                    grid: [columns, rows],
+                    from: index
+                })
+            }), 50 * rows + 1000)
+        } else {
+            const timeout = setTimeout(() => setPageState(newState), 50*columns + 500 );
+            const timeout1 = setTimeout(() => anime({
+                targets: ".tile",
+                backgroundColor: [{value: `rgb(0,0,0,0)`}],
+                delay: anime.stagger(50, {
+                    grid: [columns, rows],
+                    from: index
+                })
+            }), 50 * columns + 1000)
+        }
         
-        const timeout = setTimeout(() => setPageState(newState), 50*columns + 500 );
-        
-        const timeout1 = setTimeout(() => anime({
-            targets: ".tile",
-            backgroundColor: [{value: `rgb(0,0,0,0)`}],
-            delay: anime.stagger(50, {
-                grid: [columns, rows],
-                from: index
-            })
-        }), 50 * columns + 1000)
 
     }
     

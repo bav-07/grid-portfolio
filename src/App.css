@@ -36,8 +36,8 @@ body, html {
     -70deg,
     var(--g1),
     var(--g2)
-  );
-  background-size: 400%; */
+  ); */
+  background-size: 400%;
   transition: background-color 0.3s ease;
   transition-duration: 300;
   height: 100vh;
@@ -56,12 +56,13 @@ body, html {
   opacity: 1;
   content: "";
   position: absolute;
-  /* transition: 0.2s ease; */
+  transition: 0.2s ease;
 }
 
 .tile:hover:before {
-  opacity: 0.5;
-  /* transition: 0.2s ease; */
+  /* opacity: 0.5; */
+  scale: 0.9;
+  transition: 0.2s ease;
 }
 
 .tile:active:before {
