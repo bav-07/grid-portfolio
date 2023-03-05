@@ -21,45 +21,18 @@ body, html {
 
 }
 
-@keyframes background-pan-home {
+@keyframes background-pan {
   0%, 100% {
-    background-color: var(--g2);
+    background-position: 0% 50%;
   }
   50% {
-    background-color: var(--g1);
-  }
-}
-
-@keyframes background-pan-about {
-  0%, 100% {
-    background-color: var(--g4);
-  }
-  50% {
-    background-color: var(--g3);
-  }
-}
-
-@keyframes background-pan-projects {
-  0%, 100% {
-    background-color: var(--g6);
-  }
-  50% {
-    background-color: var(--g5);
-  }
-}
-
-@keyframes background-pan-contact {
-  0%, 100% {
-    background-color: var(--g8);
-  }
-  50% {
-    background-color: var(--g7);
+    background-position: 100% 50%;
   }
 }
 
 .tiles {
-  /* animation: background-pan 5s linear infinite;
-  background: linear-gradient(
+  animation: background-pan 5s linear infinite;
+  /* background: linear-gradient(
     -70deg,
     var(--g1),
     var(--g2)
@@ -74,7 +47,7 @@ body, html {
 
 .tile {
   position: relative;
-  opacity: 0.9;
+  opacity: 1;
   background-color: #00d2ff00;
 }
 
