@@ -54,7 +54,7 @@ const TilesHeader = () => {
             const timeout = setTimeout(() => anime({
                 targets: ".tile",
                 backgroundColor: [{value: `#11998e`, duration: 500}],
-                delay: anime.stagger({
+                delay: anime.stagger(50, {
                     grid: [columns, rows],
                     from: index
                 })
@@ -63,7 +63,7 @@ const TilesHeader = () => {
             const timeout = setTimeout(() => anime({
                 targets: ".tile",
                 backgroundColor: [{value: `#00d2ff`, duration: 500}],
-                delay: anime.stagger({
+                delay: anime.stagger(50, {
                     grid: [columns, rows],
                     from: index
                 })
@@ -72,7 +72,7 @@ const TilesHeader = () => {
             const timeout = setTimeout(() => anime({
                 targets: ".tile",
                 backgroundColor: [{value: `#654ea3`, duration: 500}],
-                delay: anime.stagger({
+                delay: anime.stagger(50, {
                     grid: [columns, rows],
                     from: index
                 })
@@ -81,7 +81,7 @@ const TilesHeader = () => {
             const timeout = setTimeout(() => anime({
                 targets: ".tile",
                 backgroundColor: [{value: `#DC0000`, duration: 500}],
-                delay: anime.stagger({
+                delay: anime.stagger(50, {
                     grid: [columns, rows],
                     from: index
                 })
@@ -89,12 +89,12 @@ const TilesHeader = () => {
         }
         
         
-        const timeout = setTimeout(() => setPageState(newState), 800);
+        const timeout = setTimeout(() => setPageState(newState), 1000);
         
-        // const timeout1 = setTimeout(() => anime({
-        //     targets: ".tile",
-        //     backgroundColor: [{value: `#DC000000`, duration: 0}],
-        // }), 1000)
+        const timeout1 = setTimeout(() => anime({
+            targets: ".tile",
+            backgroundColor: [{value: `#00000000`, duration: 0}],
+        }), 1000)
 
     }
     
