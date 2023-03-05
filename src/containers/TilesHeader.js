@@ -165,7 +165,7 @@ const TilesHeader = () => {
                     
                     index === columns * 4 + 1 ? handlePageChange(index, "about") :
                     index === columns * 6 + 1 ? handlePageChange(index, "projects") :
-                    index === columns * 8 + 1 ? handlePageChange(index, "contact") : ""
+                    index === columns * 8 + 1 ? handlePageChange(index, "contact") : handleOnClick(index)
                 
                 }s>
                     {index === columns * 4 + 1 ? <p className='absolute text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 transition-transform duration-150'><IoSquareSharp/></p> : ""}
