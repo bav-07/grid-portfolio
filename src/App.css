@@ -47,6 +47,19 @@ body, html {
     scale: 1;
   }
 }
+@keyframes disappear {
+  0% {
+    scale: 1;
+  }
+  100% {
+    scale: 0;
+  }
+}
+@keyframes disappearText {
+  100% {
+    font-size: 0;
+  }
+}
 
 /* .tile p {
   
@@ -132,6 +145,50 @@ body, html {
 .animateAppear {
   animation: appear 0.5s ease-out 1;
   animation-fill-mode: forwards;
+}
+
+.fontDisappear-0ms {
+  animation: disappearText 0.5s ease-out 1;
+  animation-fill-mode: forwards;
+}
+.animateDisappear-0ms {
+  animation: disappear 0.5s ease-out 1;
+  animation-fill-mode: forwards;
+}
+.animateDisappear-100ms {
+  animation: disappear 0.5s ease-out 1;
+  animation-fill-mode: forwards;
+  animation-delay: 100ms;
+}
+.animateDisappear-200ms {
+  animation: disappear 0.5s ease-out 1;
+  animation-fill-mode: forwards;
+  animation-delay: 200ms;
+}
+.animateDisappear-300ms {
+  animation: disappear 0.5s ease-out 1;
+  animation-fill-mode: forwards;
+  animation-delay: 300ms;
+}
+.animateDisappear-400ms {
+  animation: disappear 0.5s ease-out 1;
+  animation-fill-mode: forwards;
+  animation-delay: 400ms;
+}
+.animateDisappear-500ms {
+  animation: disappear 0.5s ease-out 1;
+  animation-fill-mode: forwards;
+  animation-delay: 500ms;
+}
+.animateDisappear-600ms {
+  animation: disappear 0.5s ease-out 1;
+  animation-fill-mode: forwards;
+  animation-delay: 600ms;
+}
+.animateDisappear-700ms {
+  animation: disappear 0.5s ease-out 1;
+  animation-fill-mode: forwards;
+  animation-delay: 700ms;
 }
 
 .tiles {
