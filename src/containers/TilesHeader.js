@@ -55,44 +55,15 @@ const TilesHeader = () => {
         })
         const timeoutload = setTimeout(() => 
         setLoadState(true), 1500)
-        if (newState === "about") {
-            const timeout = setTimeout(() => anime({
-                targets: ".tile",
-                backgroundColor: [{value: `rgb(40,40,40)`, duration: 500}],
-                delay: anime.stagger(50, {
-                    grid: [columns, rows],
-                    from: index
-                })
-            }), 500)
-        } else if (newState === "projects") {
-            const timeout = setTimeout(() => anime({
-                targets: ".tile",
-                backgroundColor: [{value: `rgb(40,40,40)`, duration: 500}],
-                delay: anime.stagger(50, {
-                    grid: [columns, rows],
-                    from: index
-                })
-            }), 500)
-        } else if (newState === "contact") {
-            const timeout = setTimeout(() => anime({
-                targets: ".tile",
-                backgroundColor: [{value: `rgb(40,40,40)`, duration: 500}],
-                delay: anime.stagger(50, {
-                    grid: [columns, rows],
-                    from: index
-                })
-            }), 500)
-        } else {
-            const timeout = setTimeout(() => anime({
-                targets: ".tile",
-                backgroundColor: [{value: `rgb(40,40,40)`, duration: 500}],
-                
-                delay: anime.stagger(50, {
-                    grid: [columns, rows],
-                    from: index
-                })
-            }), 500)
-        }
+        
+        const timeoutGrid = setTimeout(() => anime({
+            targets: ".tile",
+            backgroundColor: [{value: `rgb(40,40,40)`, duration: 500}],
+            delay: anime.stagger(50, {
+                grid: [columns, rows],
+                from: index
+            })
+        }), 500)
         
         if (document.body.clientWidth <= 560) {
             const timeout = setTimeout(() => setPageState(newState), 50*rows + 500 );
@@ -129,35 +100,6 @@ const TilesHeader = () => {
     }
     
     const handleOnClick = index => {
-        // console.log(index);
-
-        // if (index === columns * 4 + 1  || index === columns * 6 + 1 || index === columns * 8 + 1) {
-        //     anime({
-        //         targets: ".tile",
-        //         scale: [{value: 1, duration: 0}],
-        //         delay: anime.stagger(0, {
-        //             grid: [columns, rows],
-        //             from: index
-        //         })
-        //     })
-        //     anime({
-        //         targets: ".tile",
-        //         scale: [{value: 0.5, duration: 500},
-        //         {value: 1, duration: 500}],
-        //         delay: anime.stagger(50, {
-        //             grid: [columns, rows],
-        //             from: index
-        //         })
-        //     })
-        // } else {
-        //     // anime({
-        //     //     targets: ".tile",
-        //     //     scale: [{value: 1, duration: 0}],
-        //     //     delay: anime.stagger(0, {
-        //     //         grid: [columns, rows],
-        //     //         from: index
-        //     //     })
-        //     // })
         anime({
             targets: ".tile",
             scale: [{value: 0.92, duration: 300},
