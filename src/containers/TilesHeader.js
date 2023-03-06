@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { IoLogoLinkedin, IoLogoYoutube, IoSquareSharp } from "react-icons/io5";
 import { IoLogoGithub } from "react-icons/io5"
+import { easings } from 'animejs';
 
 
 const TilesHeader = () => {
@@ -32,54 +33,66 @@ const TilesHeader = () => {
             setRows(Math.floor(document.body.clientHeight / 50))
         }
         if (splashState) {
+            
+            const splashtime = setTimeout(() => {
+                const pulse = setTimeout(() => {
+                    const index = columns * rows / 2
+                    anime({
+                        targets: ".tile",
+                        scale: [{value: 0.95, duration: 100},
+                        {value: 1, duration: 300}],
+                        delay: anime.stagger(30, {
+                            grid: [columns, rows],
+                            from: index
+                        }),
+                        easing: 'easeInOutSine'
+                    })
+                }, 1500)
+    
+                const pulse2 = setTimeout(() => {
+                    const index = columns * rows / 2
+                    anime({
+                        targets: ".tile",
+                        scale: [{value: 0.9, duration: 200},
+                        {value: 1, duration: 400}],
+                        delay: anime.stagger(30, {
+                            grid: [columns, rows],
+                            from: index
+                        }),
+                        easing: 'easeInOutSine'
+                    })
+                }, 3000)
+                // const pulse3 = setTimeout(() => {
+                //     const index = columns * rows / 2
+                //     anime({
+                //         targets: ".tile",
+                //         scale: [{value: 0.8, duration: 200},
+                //         {value: 1, duration: 600}],
+                //         delay: anime.stagger(30, {
+                //             grid: [columns, rows],
+                //             from: index
+                //         }),
+                //         easing: 'easeInOutSine'
+                //     })
+                // }, 4500)
+    
+                const splashExitTime = setTimeout(() => {
+                    const index = columns * rows / 2
+                    anime({
+                        targets: ".tile",
+                        scale: [{value: 0.5, duration: 400},
+                        {value: 1, duration: 600}],
+                        delay: anime.stagger(40, {
+                            grid: [columns, rows],
+                            from: index
+                        }),
+                        easing: 'easeInOutSine'
+                    })
+                    setSplashState(false)
+                }, 4500);
 
-            const pulse = setTimeout(() => {
-                anime({
-                    targets: ".tile",
-                    scale: [{value: 0.95, duration: 100},
-                    {value: 1, duration: 300}],
-                    delay: anime.stagger(25, {
-                        grid: [columns, rows],
-                        from: (document.body.clientHeight/50) * (document.body.clientWidth/50) / 2
-                    })
-                })
-            }, 300)
+            }, 2000)
 
-            const pulse2 = setTimeout(() => {
-                anime({
-                    targets: ".tile",
-                    scale: [{value: 0.8, duration: 300},
-                    {value: 1, duration: 400}],
-                    delay: anime.stagger(25, {
-                        grid: [columns, rows],
-                        from: (document.body.clientHeight/50) * (document.body.clientWidth/50) / 2
-                    })
-                })
-            }, 2300)
-            const pulse3 = setTimeout(() => {
-                anime({
-                    targets: ".tile",
-                    scale: [{value: 0.6, duration: 400},
-                    {value: 1, duration: 600}],
-                    delay: anime.stagger(40, {
-                        grid: [columns, rows],
-                        from: ((document.body.clientHeight/50) * (document.body.clientWidth/50)) / 2
-                    })
-                })
-            }, 4000)
-
-            const splashExitTime = setTimeout(() => {
-                anime({
-                    targets: ".tile",
-                    scale: [{value: 0.5, duration: 400},
-                    {value: 1, duration: 600}],
-                    delay: anime.stagger(40, {
-                        grid: [columns, rows],
-                        from: (document.body.clientHeight/50) * (document.body.clientWidth/50) / 2
-                    })
-                })
-                setSplashState(false)
-            }, 6000);
         }
 
 
@@ -105,7 +118,8 @@ const TilesHeader = () => {
             delay: anime.stagger(0, {
                 grid: [columns, rows],
                 from: index
-            })
+            }),
+            easing: 'easeInOutSine'
         })
         setTextVanish(true);
         anime({
@@ -115,7 +129,8 @@ const TilesHeader = () => {
             delay: anime.stagger(50, {
                 grid: [columns, rows],
                 from: index
-            })
+            }),
+            easing: 'easeInOutSine'
         })
         const timeoutload = setTimeout(() => 
         setLoadState(true), 1500)
@@ -126,7 +141,8 @@ const TilesHeader = () => {
             delay: anime.stagger(50, {
                 grid: [columns, rows],
                 from: index
-            })
+            }),
+            easing: 'easeInOutSine'
         }), 500)
         
         if (document.body.clientWidth <= 560) {
@@ -137,7 +153,8 @@ const TilesHeader = () => {
                 delay: anime.stagger(50, {
                     grid: [columns, rows],
                     from: index
-                })
+                }),
+                easing: 'easeInOutSine'
             }), 50 * rows + 1000)
             const timeout2 = setTimeout(() => {
                 setLoadState(false)
@@ -152,7 +169,8 @@ const TilesHeader = () => {
                 delay: anime.stagger(50, {
                     grid: [columns, rows],
                     from: index
-                })
+                }),
+                easing: 'easeInOutSine'
             }), 50 * columns + 500)
             const timeout2 = setTimeout(() => {
                 setLoadState(false)
@@ -171,7 +189,8 @@ const TilesHeader = () => {
             delay: anime.stagger(50, {
                 grid: [columns, rows],
                 from: index
-            })
+            }),
+            easing: 'easeInOutSine'
         })
         
     }
