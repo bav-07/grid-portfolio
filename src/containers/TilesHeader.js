@@ -129,45 +129,45 @@ const TilesHeader = () => {
     }
     
     const handleOnClick = index => {
-        console.log(index);
+        // console.log(index);
 
-        if (index === columns * 4 + 1  || index === columns * 6 + 1 || index === columns * 8 + 1) {
-            anime({
-                targets: ".tile",
-                scale: [{value: 1, duration: 0}],
-                delay: anime.stagger(0, {
-                    grid: [columns, rows],
-                    from: index
-                })
+        // if (index === columns * 4 + 1  || index === columns * 6 + 1 || index === columns * 8 + 1) {
+        //     anime({
+        //         targets: ".tile",
+        //         scale: [{value: 1, duration: 0}],
+        //         delay: anime.stagger(0, {
+        //             grid: [columns, rows],
+        //             from: index
+        //         })
+        //     })
+        //     anime({
+        //         targets: ".tile",
+        //         scale: [{value: 0.5, duration: 500},
+        //         {value: 1, duration: 500}],
+        //         delay: anime.stagger(50, {
+        //             grid: [columns, rows],
+        //             from: index
+        //         })
+        //     })
+        // } else {
+        //     // anime({
+        //     //     targets: ".tile",
+        //     //     scale: [{value: 1, duration: 0}],
+        //     //     delay: anime.stagger(0, {
+        //     //         grid: [columns, rows],
+        //     //         from: index
+        //     //     })
+        //     // })
+        anime({
+            targets: ".tile",
+            scale: [{value: 0.92, duration: 300},
+            {value: 1, duration: 500}],
+            delay: anime.stagger(50, {
+                grid: [columns, rows],
+                from: index
             })
-            anime({
-                targets: ".tile",
-                scale: [{value: 0.5, duration: 500},
-                {value: 1, duration: 500}],
-                delay: anime.stagger(50, {
-                    grid: [columns, rows],
-                    from: index
-                })
-            })
-        } else {
-            // anime({
-            //     targets: ".tile",
-            //     scale: [{value: 1, duration: 0}],
-            //     delay: anime.stagger(0, {
-            //         grid: [columns, rows],
-            //         from: index
-            //     })
-            // })
-            anime({
-                targets: ".tile",
-                scale: [{value: 0.92, duration: 300},
-                {value: 1, duration: 500}],
-                delay: anime.stagger(50, {
-                    grid: [columns, rows],
-                    from: index
-                })
-            })
-        }
+        })
+        
     }
 
     return (
@@ -195,12 +195,15 @@ const TilesHeader = () => {
                     
                     
                     onClick={(e) => 
+                        
+                        index >= columns + 1 && index <= columns + 3 ? handlePageChange(index, "") : 
+                    index >= columns * 2 + 1 && index <= columns * 2 + 9 ? handlePageChange(index, "") : 
+                    pageState === "" ?
                     
                     index === columns * 4 + 1 ? handlePageChange(index, "about") :
                     index === columns * 6 + 1 ? handlePageChange(index, "projects") :
                     index === columns * 8 + 1 ? handlePageChange(index, "contact") : 
-                    index >= columns + 1 && index <= columns + 3 ? handlePageChange(index, "") : 
-                    index >= columns * 2 + 1 && index <= columns * 2 + 9 ? handlePageChange(index, "") : handleOnClick(index)
+                     handleOnClick(index) : handleOnClick(index)
                 
                 }s>
                     {index === columns + 1 ? <p className='absolute text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>B</p> : 
