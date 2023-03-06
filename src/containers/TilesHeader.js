@@ -39,11 +39,11 @@ const TilesHeader = () => {
                     const index = columns * rows / 2
                     anime({
                         targets: ".tile",
-                        scale: [{value: 0.95, duration: 100},
+                        scale: [{value: 0.95, duration: 20},
                         {value: 1, duration: 300}],
-                        delay: anime.stagger(30, {
+                        delay: anime.stagger(20, {
                             grid: [columns, rows],
-                            from: index
+                            from: (columns - 1) * (Math.floor(document.body.clientHeight)/50) / 2 + 1,
                         }),
                         easing: 'easeInOutSine'
                     })
@@ -51,13 +51,15 @@ const TilesHeader = () => {
     
                 const pulse2 = setTimeout(() => {
                     const index = columns * rows / 2
+                    console.log(columns)
+                    console.log(rows)
                     anime({
                         targets: ".tile",
-                        scale: [{value: 0.9, duration: 200},
+                        scale: [{value: 0.8, duration: 200},
                         {value: 1, duration: 400}],
                         delay: anime.stagger(30, {
                             grid: [columns, rows],
-                            from: index
+                            from: (columns - 1) * (Math.floor(document.body.clientHeight)/50) / 2 + 1,
                         }),
                         easing: 'easeInOutSine'
                     })
@@ -84,14 +86,14 @@ const TilesHeader = () => {
                         {value: 1, duration: 600}],
                         delay: anime.stagger(40, {
                             grid: [columns, rows],
-                            from: index
+                            from: (columns - 1) * (Math.floor(document.body.clientHeight)/50) / 2 + 1,
                         }),
                         easing: 'easeInOutSine'
                     })
                     setSplashState(false)
                 }, 4500);
 
-            }, 2000)
+            }, 500)
 
         }
 
