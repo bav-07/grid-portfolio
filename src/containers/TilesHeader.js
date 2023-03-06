@@ -12,6 +12,20 @@ const TilesHeader = () => {
     let [pageState, setPageState] = useState("");
     let [loadState, setLoadState] = useState(false);
 
+    window.onload = () => {
+        anime({
+            targets: ".tile .unfixed",
+            scale: [{value: 1, duration: 500}],
+            translateX: [{value: "-50%", duration: 500}],
+            translateY: [{value: "-50%", duration: 500}],
+            delay: anime.stagger(50, {
+                grid: [columns, rows],
+                from: 'center'
+            })
+        })
+
+    }
+
     window.onresize = () => {
         if (document.body.clientWidth <= 560) {
             setColumns(Math.floor(document.body.clientWidth / 30));
@@ -29,7 +43,18 @@ const TilesHeader = () => {
             setColumns(Math.floor(document.body.clientWidth / 50));
             setRows(Math.floor(document.body.clientHeight / 50))
         }
+        anime({
+            targets: ".tile .unfixed",
+            scale: [{value: 1, duration: 500}],
+            translateX: [{value: "-50%", duration: 500}],
+            translateY: [{value: "-50%", duration: 500}],
+            delay: anime.stagger(50, {
+                grid: [columns, rows],
+                from: 'center'
+            })
+        })
     }
+
 
     const handlePageChange = (index, newState) => {
         
@@ -52,67 +77,69 @@ const TilesHeader = () => {
             })
         })
         setLoadState(true);
-        if (newState === "about") {
-            const timeout = setTimeout(() => anime({
-                targets: ".tile",
-                backgroundColor: [{value: `rgb(40,40,40)`, duration: 500}],
-                delay: anime.stagger(50, {
-                    grid: [columns, rows],
-                    from: index
-                })
-            }), 500)
-        } else if (newState === "projects") {
-            const timeout = setTimeout(() => anime({
-                targets: ".tile",
-                backgroundColor: [{value: `rgb(40,40,40)`, duration: 500}],
-                delay: anime.stagger(50, {
-                    grid: [columns, rows],
-                    from: index
-                })
-            }), 500)
-        } else if (newState === "contact") {
-            const timeout = setTimeout(() => anime({
-                targets: ".tile",
-                backgroundColor: [{value: `rgb(40,40,40)`, duration: 500}],
-                delay: anime.stagger(50, {
-                    grid: [columns, rows],
-                    from: index
-                })
-            }), 500)
-        } else {
-            const timeout = setTimeout(() => anime({
-                targets: ".tile",
-                backgroundColor: [{value: `rgb(40,40,40)`, duration: 500}],
-                
-                delay: anime.stagger(50, {
-                    grid: [columns, rows],
-                    from: index
-                })
-            }), 500)
-        }
+        anime({
+            targets: ".tile .unfixed",
+            scale: [{value: 0, duration: 500}],
+            delay: anime.stagger(50, {
+                grid: [columns, rows],
+                from: index
+            })
+        })
+        const timeout = setTimeout(() => {
+            anime({
+            targets: ".tile",
+            backgroundColor: [{value: `rgb(40,40,40)`, duration: 500}],
+            delay: anime.stagger(50, {
+                grid: [columns, rows],
+                from: index
+            })
+        })}, 500)
+       
         
         if (document.body.clientWidth <= 560) {
             const timeout = setTimeout(() => setPageState(newState), 50*rows + 500 );
-            const timeout1 = setTimeout(() => anime({
+            const timeout1 = setTimeout(() => {
+                anime({
+                    targets: ".tile .unfixed",
+                    scale: [{value: 1, duration: 500}],
+                    translateX: [{value: "-50%", duration: 500}],
+                    translateY: [{value: "-50%", duration: 500}],
+                    delay: anime.stagger(50, {
+                        grid: [columns, rows],
+                        from: index
+                    })
+                })
+                anime({
                 targets: ".tile",
                 backgroundColor: [{value: `rgb(0,0,0,0)`}],
                 delay: anime.stagger(50, {
                     grid: [columns, rows],
                     from: index
                 })
-            }), 50 * rows + 1000)
+            })}, 50 * rows + 1000)
             const timeout2 = setTimeout(() => setLoadState(false), 50*columns + 1500 );
 
         } else {
             const timeout = setTimeout(() => setPageState(newState), 50*columns + 500 );
-            const timeout1 = setTimeout(() => anime({
+            const timeout1 = setTimeout(() => {
+                anime({
+                    targets: ".tile .unfixed",
+                    scale: [{value: 1, duration: 500}],
+                    translateX: [{value: "-25%", duration: 500}],
+                    translateY: [{value: "-25%", duration: 500}],
+                    delay: anime.stagger(50, {
+                        grid: [columns, rows],
+                        from: index
+                    })
+                })
+                anime({
                 targets: ".tile",
                 backgroundColor: [{value: `rgb(0,0,0,0)`}],
                 delay: anime.stagger(50, {
                     grid: [columns, rows],
                     from: index
                 })
-            }), 50 * columns + 500)
+            })}, 50 * columns + 500)
             const timeout2 = setTimeout(() => setLoadState(false), 50*columns + 1500 );
         }
         
@@ -212,34 +239,34 @@ const TilesHeader = () => {
                     {index === columns * 2 - 2 ? <p className='absolute text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 transition-transform duration-150'><IoLogoLinkedin/></p> : ""}
 
                     
-                    {pageState === "" && loadState == false && index === columns * 4 + 1 ? <p className='absolute delay-0ms text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 group-hover:translate-x-[-75%] group-hover:translate-y-[-75%] transition-transform origin-center duration-150'><IoSquareSharp/></p> : ""}
-                    {pageState === "" && loadState == false && index === columns * 6 + 1 ? <p className='absolute delay-0ms text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 group-hover:translate-x-[-75%] group-hover:translate-y-[-75%] transition-transform origin-center duration-150'><IoSquareSharp/></p> : ""}
-                    {pageState === "" && loadState == false && index === columns * 8 + 1 ? <p className='absolute delay-0ms text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 group-hover:translate-x-[-75%] group-hover:translate-y-[-75%] transition-transform origin-center duration-150'><IoSquareSharp/></p> : ""}
+                    {pageState === "" && index === columns * 4 + 1 ? <p className='unfixed scale-0 absolute delay-0ms text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 group-hover:translate-x-[-75%] group-hover:translate-y-[-75%] transition-transform origin-center duration-150'><IoSquareSharp/></p> : ""}
+                    {pageState === "" && index === columns * 6 + 1 ? <p className='unfixed scale-0 absolute delay-0ms text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 group-hover:translate-x-[-75%] group-hover:translate-y-[-75%] transition-transform origin-center duration-150'><IoSquareSharp/></p> : ""}
+                    {pageState === "" && index === columns * 8 + 1 ? <p className='unfixed scale-0 absolute delay-0ms text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 group-hover:translate-x-[-75%] group-hover:translate-y-[-75%] transition-transform origin-center duration-150'><IoSquareSharp/></p> : ""}
                     
-                        {pageState === "" && loadState == false ? index === columns * 6 + 2 ? <p className='absolute delay-0ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>P</p> : 
-                        index === columns * 6 + 3 ? <p className='absolute delay-100ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>R</p> :
-                        index === columns * 6 + 4 ? <p className='absolute delay-200ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>O</p> :
-                        index === columns * 6 + 5 ? <p className='absolute delay-300ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>J</p> :
-                        index === columns * 6 + 6 ? <p className='absolute delay-400ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>E</p> :
-                        index === columns * 6 + 7 ? <p className='absolute delay-500ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>C</p> :
-                        index === columns * 6 + 8 ? <p className='absolute delay-600ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>T</p> :
-                        index === columns * 6 + 9 ? <p className='absolute delay-700ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>S</p> : "" : ""
+                        {pageState === "" ? index === columns * 6 + 2 ? <p className='unfixed scale-0 absolute delay-0ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>P</p> : 
+                        index === columns * 6 + 3 ? <p className='unfixed scale-0 absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>R</p> :
+                        index === columns * 6 + 4 ? <p className='unfixed scale-0 absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>O</p> :
+                        index === columns * 6 + 5 ? <p className='unfixed scale-0 absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>J</p> :
+                        index === columns * 6 + 6 ? <p className='unfixed scale-0 absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>E</p> :
+                        index === columns * 6 + 7 ? <p className='unfixed scale-0 absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>C</p> :
+                        index === columns * 6 + 8 ? <p className='unfixed scale-0 absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>T</p> :
+                        index === columns * 6 + 9 ? <p className='unfixed scale-0 absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>S</p> : "" : ""
                         }
 
-                        {pageState === "" && loadState == false ? index === columns * 4 + 2 ? <p className='absolute delay-0ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>A</p> : 
-                        index === columns * 4 + 3 ? <p className='absolute delay-100ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>B</p> :
-                        index === columns * 4 + 4 ? <p className='absolute delay-200ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>O</p> :
-                        index === columns * 4 + 5 ? <p className='absolute delay-300ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>U</p> :
-                        index === columns * 4 + 6 ? <p className='absolute delay-400ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>T</p> : "" : ""
+                        {pageState === "" ? index === columns * 4 + 2 ? <p className='unfixed scale-0 absolute delay-0ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>A</p> : 
+                        index === columns * 4 + 3 ? <p className='unfixed scale-0 absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>B</p> :
+                        index === columns * 4 + 4 ? <p className='unfixed scale-0 absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>O</p> :
+                        index === columns * 4 + 5 ? <p className='unfixed scale-0 absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>U</p> :
+                        index === columns * 4 + 6 ? <p className='unfixed scale-0 absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>T</p> : "" : ""
                         }   
 
-                        {pageState === "" && loadState == false ? index === columns * 8 + 2 ? <p className='absolute delay-0ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>C</p> : 
-                        index === columns * 8 + 3 ? <p className='absolute delay-100ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>O</p> :
-                        index === columns * 8 + 4 ? <p className='absolute delay-200ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>N</p> :
-                        index === columns * 8 + 5 ? <p className='absolute delay-300ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>T</p> :
-                        index === columns * 8 + 6 ? <p className='absolute delay-400ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>A</p> :
-                        index === columns * 8 + 7 ? <p className='absolute delay-500ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>C</p> :
-                        index === columns * 8 + 8 ? <p className='absolute delay-600ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>T</p> : "" : ""
+                        {pageState === "" ? index === columns * 8 + 2 ? <p className='unfixed scale-0 absolute delay-0ms text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>C</p> : 
+                        index === columns * 8 + 3 ? <p className='unfixed scale-0 absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>O</p> :
+                        index === columns * 8 + 4 ? <p className='unfixed scale-0 absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>N</p> :
+                        index === columns * 8 + 5 ? <p className='unfixed scale-0 absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>T</p> :
+                        index === columns * 8 + 6 ? <p className='unfixed scale-0 absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>A</p> :
+                        index === columns * 8 + 7 ? <p className='unfixed scale-0 absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>C</p> :
+                        index === columns * 8 + 8 ? <p className='unfixed scale-0 absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>T</p> : "" : ""
                         }
 
                 </div>;
