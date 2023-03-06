@@ -156,41 +156,49 @@ body, html {
 .animateDisappear-0ms {
   animation: disappear 0.5s ease-out 1;
   animation-fill-mode: forwards;
+  transform-origin: 0% 0%;
 }
 .animateDisappear-100ms {
   animation: disappear 0.5s ease-out 1;
   animation-fill-mode: forwards;
   animation-delay: 100ms;
+  transform-origin: 0% 0%;
 }
 .animateDisappear-200ms {
   animation: disappear 0.5s ease-out 1;
   animation-fill-mode: forwards;
   animation-delay: 200ms;
+  transform-origin: 0% 0%;
 }
 .animateDisappear-300ms {
   animation: disappear 0.5s ease-out 1;
   animation-fill-mode: forwards;
   animation-delay: 300ms;
+  transform-origin: 0% 0%;
 }
 .animateDisappear-400ms {
   animation: disappear 0.5s ease-out 1;
   animation-fill-mode: forwards;
   animation-delay: 400ms;
+  transform-origin: 0% 0%;
 }
 .animateDisappear-500ms {
   animation: disappear 0.5s ease-out 1;
   animation-fill-mode: forwards;
   animation-delay: 500ms;
+  transform-origin: 0% 0%;
 }
 .animateDisappear-600ms {
   animation: disappear 0.5s ease-out 1;
   animation-fill-mode: forwards;
   animation-delay: 600ms;
+  transform-origin: 0% 0%;
 }
 .animateDisappear-700ms {
   animation: disappear 0.5s ease-out 1;
   animation-fill-mode: forwards;
   animation-delay: 700ms;
+  transform-origin: 0% 0%;
 }
 
 .tiles {

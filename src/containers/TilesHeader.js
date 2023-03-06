@@ -54,7 +54,7 @@ const TilesHeader = () => {
             })
         })
         const timeoutload = setTimeout(() => 
-        setLoadState(true), 500)
+        setLoadState(true), 1500)
         if (newState === "about") {
             const timeout = setTimeout(() => anime({
                 targets: ".tile",
