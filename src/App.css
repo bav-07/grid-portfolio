@@ -30,6 +30,30 @@ body, html {
   }
 }
 
+@keyframes appear {
+  0% {
+    font-size: 0;
+  }
+  /* 20% {
+    font-size: 0.1
+  }
+  50% {
+    font-size: 0.7
+  } 
+  80% {
+    font-size: 0.9
+  } */
+  100% {
+    font-size: 1;
+  }
+}
+
+.tile p {
+  /* transform-origin: 0% 0%; */
+  animation: appear 0.5s ease-out 1;
+  animation-fill-mode: forwards;
+}
+
 .tiles {
   animation: background-pan 5s linear infinite;
   /* background: linear-gradient(
