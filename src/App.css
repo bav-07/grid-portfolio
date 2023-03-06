@@ -32,7 +32,7 @@ body, html {
 
 @keyframes appear {
   0% {
-    font-size: 0;
+    scale: 0;
   }
   /* 20% {
     font-size: 0.1
@@ -44,7 +44,7 @@ body, html {
     font-size: 0.9
   } */
   100% {
-    font-size: 100%;
+    scale: 1;
   }
 }
 
@@ -58,51 +58,74 @@ body, html {
 
 
 .delay-0ms {
-  font-size: 0;
+  /* font-size: 0; */
+  scale: 0;
   animation: appear 0.5s ease-out 1;
   animation-fill-mode: forwards;
+  transform-origin: 0% 0%;
   animation-delay: 0ms;
 }
 .delay-100ms {
-  font-size: 0;
+  /* font-size: 0; */
+  scale: 0;
   animation: appear 0.5s ease-out 1;
   animation-fill-mode: forwards;
+  transform-origin: 0% 0%;
+
   animation-delay: 100ms;
 }
 .delay-200ms {
-  font-size: 0;
+  /* font-size: 0; */
+  scale: 0;
   animation: appear 0.5s ease-out 1;
   animation-fill-mode: forwards;
+  transform-origin: 0% 0%;
+
   animation-delay: 200ms;
 }
 .delay-300ms {
-  font-size: 0;
+  /* font-size: 0; */
+  scale: 0;
   animation: appear 0.5s ease-out 1;
   animation-fill-mode: forwards;
+  transform-origin: 0% 0%;
+
   animation-delay: 300ms;
 }
 .delay-400ms {
-  font-size: 0;
+  /* font-size: 0; */
+  scale: 0;
   animation: appear 0.5s ease-out 1;
   animation-fill-mode: forwards;
+  transform-origin: 0% 0%;
+
   animation-delay: 400ms;
 }
 .delay-500ms {
-  font-size: 0;
+  /* font-size: 0; */
+  scale: 0;
   animation: appear 0.5s ease-out 1;
   animation-fill-mode: forwards;
+  transform-origin: 0% 0%;
+
   animation-delay: 500ms;
 }
 .delay-600ms {
-  font-size: 0;
+  /* font-size: 0; */
+  scale: 0;
   animation: appear 0.5s ease-out 1;
   animation-fill-mode: forwards;
+  transform-origin: 0% 0%;
+
   animation-delay: 600ms;
 }
 .delay-700ms {
-  font-size: 0;
+  /* font-size: 0; */
+  scale: 0;
   animation: appear 0.5s ease-out 1;
   animation-fill-mode: forwards;
+  transform-origin: 0% 0%;
+
   animation-delay: 700ms;
 }
 
@@ -144,6 +167,13 @@ body, html {
   /* opacity: 0.5; */
   scale: 0.9;
   transition: 0.2s ease;
+  /* transform-origin: 50% 50%; */
+}
+
+.tile:hover .linkbutton {
+  transform-origin: center;
+  scale: 150%;
+  transition-duration: 0.15s ease;
 }
 
 .tile:active:before {
