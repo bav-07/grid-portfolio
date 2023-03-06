@@ -47,6 +47,14 @@ body, html {
     scale: 1;
   }
 }
+@keyframes disappear {
+  0% {
+    scale: 1;
+  }
+  100% {
+    scale: 0;
+  }
+}
 
 /* .tile p {
   
@@ -129,8 +137,15 @@ body, html {
   animation-delay: 700ms;
 }
 
+
+
 .animateAppear {
   animation: appear 0.5s ease-out 1;
+  animation-fill-mode: forwards;
+}
+
+.animateDisappear {
+  animation: disappear 0.5s ease-out 1;
   animation-fill-mode: forwards;
 }
 
