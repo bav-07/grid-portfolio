@@ -141,6 +141,24 @@ body, html {
 
   animation-delay: 700ms;
 }
+.delay-800ms {
+  /* font-size: 0; */
+  scale: 0;
+  animation: appear 0.5s ease-out 1;
+  animation-fill-mode: forwards;
+  transform-origin: 0% 0%;
+
+  animation-delay: 800ms;
+}
+.delay-900ms {
+  /* font-size: 0; */
+  scale: 0;
+  animation: appear 0.5s ease-out 1;
+  animation-fill-mode: forwards;
+  transform-origin: 0% 0%;
+
+  animation-delay: 900ms;
+}
 
 .animateAppear {
   animation: appear 0.5s ease-out 1;
