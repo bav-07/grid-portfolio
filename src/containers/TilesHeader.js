@@ -25,25 +25,30 @@ const TilesHeader = () => {
         }
     }
     window.onload = () => {
+        let multiplier;
         if (document.body.clientWidth <= 560) {
             setColumns(Math.floor(document.body.clientWidth / 30));
             setRows(Math.floor(document.body.clientHeight / 30))
+            multiplier = 30;
         } else {
             setColumns(Math.floor(document.body.clientWidth / 50));
             setRows(Math.floor(document.body.clientHeight / 50))
+            multiplier = 50;
         }
         if (splashState) {
             
             const splashtime = setTimeout(() => {
                 const pulse = setTimeout(() => {
                     const index = columns * rows / 2
+                    console.log(Math.floor(document.body.clientWidth/50))
+                    console.log(Math.floor(document.body.clientHeight/50))
                     anime({
                         targets: ".tile",
                         scale: [{value: 0.95, duration: 20},
                         {value: 1, duration: 300}],
                         delay: anime.stagger(20, {
                             grid: [columns, rows],
-                            from: (columns - 1) * (Math.floor(document.body.clientHeight)/50) / 2 + 1,
+                            from: (Math.floor((Math.floor(document.body.clientWidth/multiplier))/2) + ((Math.floor(document.body.clientWidth/multiplier)) *((Math.floor(document.body.clientHeight / multiplier))/2 - 1)))
                         }),
                         easing: 'easeInOutSine'
                     })
@@ -59,7 +64,7 @@ const TilesHeader = () => {
                         {value: 1, duration: 400}],
                         delay: anime.stagger(30, {
                             grid: [columns, rows],
-                            from: (columns - 1) * (Math.floor(document.body.clientHeight)/50) / 2 + 1,
+                            from: (Math.floor((Math.floor(document.body.clientWidth/multiplier))/2) + ((Math.floor(document.body.clientWidth/multiplier)) *((Math.floor(document.body.clientHeight / multiplier))/2 - 1)))
                         }),
                         easing: 'easeInOutSine'
                     })
@@ -86,7 +91,7 @@ const TilesHeader = () => {
                         {value: 1, duration: 600}],
                         delay: anime.stagger(40, {
                             grid: [columns, rows],
-                            from: (columns - 1) * (Math.floor(document.body.clientHeight)/50) / 2 + 1,
+                            from: (Math.floor((Math.floor(document.body.clientWidth/multiplier))/2) + ((Math.floor(document.body.clientWidth/multiplier)) * ((Math.floor(document.body.clientHeight / multiplier))/2 - 1)))
                         }),
                         easing: 'easeInOutSine'
                     })
