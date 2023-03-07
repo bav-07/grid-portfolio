@@ -224,7 +224,7 @@ const TilesHeader = () => {
             className={`tiles h-[100vh] w-[100vw]`}>
             {Array.from(Array(columns * rows)).map((tile, index) => {
                 return <div className={`tile group
-                    ${splashState ? "before:inset-[0px] before:bg-[rgb(20,20,20,0.99)] " : "before:inset-[0.5px] before:bg-[rgb(20,20,20,0.8)]"}`} 
+                    ${splashState ? "before:inset-[0px] border-[rgb(10,10,10)] border-[1px] before:bg-gradient-to-tr from-[rgb(20,20,20,0.99)] to-[rgb(40,40,40,0.99)]" : "before:inset-[0.5px] before:bg-gradient-to-tr from-[rgb(20,20,20,0.8)] to-[rgb(40,40,40,0.8)]"}`} 
                     
                     
                     onClick={(e) => 
