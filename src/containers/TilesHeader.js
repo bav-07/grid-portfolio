@@ -51,7 +51,7 @@ const TilesHeader = () => {
                             grid: [Math.floor(document.body.clientWidth/multiplier), Math.floor(document.body.clientHeight / multiplier)],
                             from: 'center'
                         }),
-                        easing: 'easeInOutSine'
+                        easing: 'easeInOutQuint'
                     })
                 }, 1000)
     
@@ -67,7 +67,7 @@ const TilesHeader = () => {
                             grid: [Math.floor(document.body.clientWidth/multiplier), Math.floor(document.body.clientHeight / multiplier)],
                             from: 'center'
                         }),
-                        easing: 'easeInOutSine'
+                        easing: 'easeInOutQuint'
                     })
                 }, 3000)
                 // const pulse3 = setTimeout(() => {
@@ -90,11 +90,12 @@ const TilesHeader = () => {
                         targets: ".tile",
                         scale: [{value: 0.5, duration: 400},
                         {value: 1, duration: 600}],
+                        
                         delay: anime.stagger(40, {
                             grid: [Math.floor(document.body.clientWidth/multiplier), Math.floor(document.body.clientHeight / multiplier)],
                             from: 'center'
                         }),
-                        easing: 'easeInOutSine'
+                        easing: 'easeInOutQuint'
                     })
                     setSplashState(false)
                 }, 5000);
@@ -190,16 +191,18 @@ const TilesHeader = () => {
     }
     
     const handleOnClick = index => {
-        anime({
-            targets: ".tile",
-            scale: [{value: 0.92, duration: 300},
-            {value: 1, duration: 500}],
-            delay: anime.stagger(50, {
-                grid: [columns, rows],
-                from: index
-            }),
-            easing: 'easeInOutSine'
-        })
+        if (!splashState && !loadState) {
+            anime({
+                targets: ".tile",
+                scale: [{value: 0.92, duration: 300},
+                {value: 1, duration: 500}],
+                delay: anime.stagger(50, {
+                    grid: [columns, rows],
+                    from: index
+                }),
+                easing: 'easeInOutSine'
+            })
+        }
         
     }
 
@@ -224,7 +227,7 @@ const TilesHeader = () => {
             className={`tiles h-[100vh] w-[100vw]`}>
             {Array.from(Array(columns * rows)).map((tile, index) => {
                 return <div className={`tile group
-                    ${splashState ? "before:inset-[0px] border-[rgb(10,10,10)] border-[1px] before:bg-gradient-to-tr from-[rgb(20,20,20,0.99)] to-[rgb(40,40,40,0.99)]" : "before:inset-[0.5px] before:bg-gradient-to-tr from-[rgb(20,20,20,0.8)] to-[rgb(40,40,40,0.8)]"}`} 
+                    ${splashState ? "before:inset-[0px] border-[rgb(40,40,40)] border-[0.5px] before:bg-[rgb(20,20,20,0.99)]" : "before:inset-[0.5px] before:bg-[rgb(20,20,20,0.8)]"}`} 
                     
                     
                     onClick={(e) => 
