@@ -53,7 +53,7 @@ const TilesHeader = () => {
                         }),
                         easing: 'easeInOutSine'
                     })
-                }, 1500)
+                }, 1000)
     
                 const pulse2 = setTimeout(() => {
                     const index = columns * rows / 2
@@ -97,7 +97,7 @@ const TilesHeader = () => {
                         easing: 'easeInOutSine'
                     })
                     setSplashState(false)
-                }, 4500);
+                }, 5000);
 
             }, 500)
 
@@ -179,7 +179,7 @@ const TilesHeader = () => {
                     from: index
                 }),
                 easing: 'easeInOutSine'
-            }), 50 * columns + 500)
+            }), 50 * columns + 1000)
             const timeout2 = setTimeout(() => {
                 setLoadState(false)
                 setTextVanish(false)
