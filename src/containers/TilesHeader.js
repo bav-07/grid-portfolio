@@ -40,15 +40,16 @@ const TilesHeader = () => {
             const splashtime = setTimeout(() => {
                 const pulse = setTimeout(() => {
                     const index = columns * rows / 2
+                    let i = 1
                     console.log(Math.floor(document.body.clientWidth/50))
                     console.log(Math.floor(document.body.clientHeight/50))
                     anime({
                         targets: ".tile",
-                        scale: [{value: 0.95, duration: 50},
+                        scale: [{value: 0.9, duration: 50},
                         {value: 1, duration: 300}],
-                        delay: anime.stagger(30, {
-                            grid: [columns, rows],
-                            from: (Math.floor((Math.floor(document.body.clientWidth/multiplier))/2) + ((Math.floor(document.body.clientWidth/multiplier)) *((Math.floor(document.body.clientHeight / multiplier))/2 - 1)))
+                        delay: anime.stagger(40*i, {
+                            grid: [Math.floor(document.body.clientWidth/multiplier), Math.floor(document.body.clientHeight / multiplier)],
+                            from: 'center'
                         }),
                         easing: 'easeInOutSine'
                     })
@@ -62,9 +63,9 @@ const TilesHeader = () => {
                         targets: ".tile",
                         scale: [{value: 0.8, duration: 200},
                         {value: 1, duration: 400}],
-                        delay: anime.stagger(30, {
-                            grid: [columns, rows],
-                            from: (Math.floor((Math.floor(document.body.clientWidth/multiplier))/2) + ((Math.floor(document.body.clientWidth/multiplier)) *((Math.floor(document.body.clientHeight / multiplier))/2 - 1)))
+                        delay: anime.stagger(40, {
+                            grid: [Math.floor(document.body.clientWidth/multiplier), Math.floor(document.body.clientHeight / multiplier)],
+                            from: 'center'
                         }),
                         easing: 'easeInOutSine'
                     })
@@ -90,8 +91,8 @@ const TilesHeader = () => {
                         scale: [{value: 0.5, duration: 400},
                         {value: 1, duration: 600}],
                         delay: anime.stagger(40, {
-                            grid: [columns, rows],
-                            from: (Math.floor((Math.floor(document.body.clientWidth/multiplier))/2) + ((Math.floor(document.body.clientWidth/multiplier)) * ((Math.floor(document.body.clientHeight / multiplier))/2 - 1)))
+                            grid: [Math.floor(document.body.clientWidth/multiplier), Math.floor(document.body.clientHeight / multiplier)],
+                            from: 'center'
                         }),
                         easing: 'easeInOutSine'
                     })
@@ -251,9 +252,9 @@ const TilesHeader = () => {
                     index === columns * 2 + 8 ? <p className='absolute delay-800ms text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>a</p> :
                     index === columns * 2 + 9 ? <p className='absolute delay-900ms text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>h</p> : "" : ""}
 
-                    {!splashState ? index === columns * 2 - 4 ? <p className='absolute delay-100ms text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 transition-transform duration-150'><IoLogoGithub/></p> : "" : ""}
-                    {!splashState ? index === columns * 2 - 3 ? <p className='absolute delay-200ms text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 transition-transform duration-150'><IoLogoYoutube/></p> : "" : ""}
-                    {!splashState ? index === columns * 2 - 2 ? <p className='absolute delay-300ms text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 transition-transform duration-150'><IoLogoLinkedin/></p> : "" : ""}
+                    {!splashState ? index === columns * 2 - 4 ? <p className='absolute delay-100ms text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-[130%] group-hover:translate-x-[-65%] group-hover:translate-y-[-65%] transition-transform duration-150'><IoLogoGithub/></p> : "" : ""}
+                    {!splashState ? index === columns * 2 - 3 ? <p className='absolute delay-200ms text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-[130%] group-hover:translate-x-[-65%] group-hover:translate-y-[-65%] transition-transform duration-150'><IoLogoYoutube/></p> : "" : ""}
+                    {!splashState ? index === columns * 2 - 2 ? <p className='absolute delay-300ms text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-[130%] group-hover:translate-x-[-65%] group-hover:translate-y-[-65%] transition-transform duration-150'><IoLogoLinkedin/></p> : "" : ""}
 
                     
                     {!splashState ? pageState === "" && loadState === false && index === columns * 4 + 1 ? <p className={`${textVanish ? 'fontDisappear-500ms' : "delay-0ms"} absolute text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 group-hover:translate-x-[-75%] group-hover:translate-y-[-75%] transition-transform origin-center duration-150`}><IoSquareSharp/></p> : "" : ""}
