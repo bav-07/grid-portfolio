@@ -12,21 +12,21 @@ body, html {
 :root {
   --g1: #DC0000;
   --g2: #520707;
-  --g3: #11998e;
-  --g4: #38ef7d;
+  --g3: #15c6b7;
+  --g4: #186451;
   --g5: #00d2ff;
   --g6: #3a7bd5;
   --g7: #654ea3;
-  --g8: #eaafc8;
+  --g8: #472d75;
 
 }
 
 @keyframes background-pan {
   0%, 100% {
-    background-position: 0% 50%;
+    background-size: 200%;
   }
   50% {
-    background-position: 100% 50%;
+    background-size: 300%;
   }
 }
 

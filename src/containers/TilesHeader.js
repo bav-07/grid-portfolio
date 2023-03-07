@@ -214,14 +214,17 @@ const TilesHeader = () => {
                 gridTemplateColumns: `repeat(${columns}, 1fr)`,
                 gridTemplateRows: `repeat(${rows}, 1fr)`,
                 animation: `background-pan 5s linear infinite`,
-                background: `linear-gradient(
-                    -70deg,
-                    ${pageState === "" ? "var(--g1)" : pageState === "about" ? "var(--g3)" : pageState === "projects" ? "var(--g5)" : pageState === "contact" ? "var(--g7)" : "var(--g1)"},
-                    ${pageState === "" ? "var(--g2)" : pageState === "about" ? "var(--g4)" : pageState === "projects" ? "var(--g6)" : pageState === "contact" ? "var(--g8)" : "var(--g1)"}
+                animationTimingFunction: `cubic-bezier(0.76, 0, 0.24, 1)`,
+                background: `radial-gradient(
+                    circle at center,
+                    ${pageState === "" ? "var(--g1)" : pageState === "about" ? "var(--g3)" : pageState === "projects" ? "var(--g5)" : pageState === "contact" ? "var(--g7)" : "var(--g1)"} 0%,
+                    ${pageState === "" ? "var(--g2)" : pageState === "about" ? "var(--g4)" : pageState === "projects" ? "var(--g6)" : pageState === "contact" ? "var(--g8)" : "var(--g1)"} 50%
                 )`,
                 //backgroundColor: `${pageState === "" ? "var(--g1)" : pageState === "about" ? "var(--g3)" : pageState === "projects" ? "var(--g5)" : pageState === "contact" ? "var(--g7)" : "var(--g1)"}`,
-                
-                backgroundSize: `${pageState === "" ? "400%" : pageState === "about" ? "402%" : pageState === "projects" ? "403%" : pageState === "contact" ? "404%" : "405%"}`
+                // backgroundPositionX: 'center',
+                // backgroundPositionY: 'center',
+                backgroundPositionX: `${pageState === "" ? "center" : pageState === "about" ? "center" : pageState === "projects" ? "center" : pageState === "contact" ? "center" : "center"}`,
+                backgroundPositionY: `${pageState === "" ? "center" : pageState === "about" ? "center" : pageState === "projects" ? "center" : pageState === "contact" ? "center" : "center"}`
 
             }}
             className={`tiles h-[100vh] w-[100vw]`}>
