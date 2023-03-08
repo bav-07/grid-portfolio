@@ -1,7 +1,7 @@
 import anime from 'animejs/lib/anime.es.js';
 import { useState } from 'react';
 import { Link } from "react-router-dom";
-import { IoLogoLinkedin, IoLogoYoutube, IoSquareSharp } from "react-icons/io5";
+import { IoLogoLinkedin, IoLogoYoutube, IoNuclearOutline, IoSquareSharp } from "react-icons/io5";
 import { IoLogoGithub } from "react-icons/io5"
 import { easings } from 'animejs';
 
@@ -14,14 +14,20 @@ const TilesHeader = () => {
     let [loadState, setLoadState] = useState(false);
     let [textVanish, setTextVanish] = useState(false);
     let [splashState, setSplashState] = useState(true);
+    let [sizeMultiplier, setSizeMultiplier] = useState(null);
 
     window.onresize = () => {
         if (document.body.clientWidth <= 560) {
             setColumns(Math.floor(document.body.clientWidth / 30));
             setRows(Math.floor(document.body.clientHeight / 30))
+            setSizeMultiplier(30);
+            document.querySelector(':root').style.setProperty('--size', 30);
         } else {
             setColumns(Math.floor(document.body.clientWidth / 50));
             setRows(Math.floor(document.body.clientHeight / 50))
+            setSizeMultiplier(50);
+            document.querySelector(':root').style.setProperty('--size', 50);
+
         }
     }
     window.onload = () => {
@@ -29,11 +35,17 @@ const TilesHeader = () => {
         if (document.body.clientWidth <= 560) {
             setColumns(Math.floor(document.body.clientWidth / 30));
             setRows(Math.floor(document.body.clientHeight / 30))
+            setSizeMultiplier(30);
             multiplier = 30;
+            document.querySelector(':root').style.setProperty('--size', 30);
+
         } else {
             setColumns(Math.floor(document.body.clientWidth / 50));
             setRows(Math.floor(document.body.clientHeight / 50))
+            setSizeMultiplier(50);
             multiplier = 50;
+            document.querySelector(':root').style.setProperty('--size', 50);
+
         }
         if (splashState) {
             
@@ -193,7 +205,7 @@ const TilesHeader = () => {
     const handleOnClick = index => {
         if (!splashState && !loadState) {
             anime({
-                targets: ".tile",
+                targets: ".scatter",
                 scale: [{value: 0.92, duration: 300},
                 {value: 1, duration: 500}],
                 delay: anime.stagger(50, {
@@ -204,6 +216,37 @@ const TilesHeader = () => {
             })
         }
         
+    }
+
+    const selectAction = index => {
+        if (index >= columns + 1 && index <= columns + 3) handlePageChange(index, "")
+        if (index >= columns * 2 + 1 && index <= columns * 2 + 9) handlePageChange(index, "")
+        if (pageState === "") { 
+                index >= columns + 1 && index <= columns + 3 ? handlePageChange(index, "") :
+                index >= columns * 2 + 1 && index <= columns * 2 + 9 ? handlePageChange(index, "") :
+                index === columns * 4 + 1 ? handlePageChange(index, "about") :
+                index === columns * 6 + 1 ? handlePageChange(index, "projects") :
+                index === columns * 8 + 1 ? handlePageChange(index, "contact") : 
+                handleOnClick(index)
+        }
+        else if (pageState === "about") { 
+            index >= columns + 1 && index <= columns + 3 ? handlePageChange(index, "") :
+            index >= columns * 2 + 1 && index <= columns * 2 + 9 ? handlePageChange(index, "") :
+            handleOnClick(index)
+        }
+        else if (pageState === "projects") { 
+            index >= columns + 1 && index <= columns + 3 ? handlePageChange(index, "") :
+            index >= columns * 2 + 1 && index <= columns * 2 + 9 ? handlePageChange(index, "") :
+            handleOnClick(index)
+        }
+        else if (pageState === "contact") { 
+            index >= columns + 1 && index <= columns + 3 ? handlePageChange(index, "") :
+            index >= columns * 2 + 1 && index <= columns * 2 + 9 ? handlePageChange(index, "") :
+            handleOnClick(index)
+        }
+        else {
+
+        }
     }
 
     return (
@@ -227,21 +270,10 @@ const TilesHeader = () => {
             className={`tiles h-[100vh] w-[100vw]`}>
             {Array.from(Array(columns * rows)).map((tile, index) => {
                 return <div className={`tile group
-                    ${splashState ? "before:inset-[0px] border-[rgb(40,40,40)] border-[0.5px] before:bg-[rgb(20,20,20,0.99)]" : "before:inset-[0.5px] before:bg-[rgb(20,20,20,0.8)]"}`} 
-                    
-                    
-                    onClick={(e) => 
-                        
-                        index >= columns + 1 && index <= columns + 3 ? handlePageChange(index, "") : 
-                    index >= columns * 2 + 1 && index <= columns * 2 + 9 ? handlePageChange(index, "") : 
-                    pageState === "" ?
-                    
-                    index === columns * 4 + 1 ? handlePageChange(index, "about") :
-                    index === columns * 6 + 1 ? handlePageChange(index, "projects") :
-                    index === columns * 8 + 1 ? handlePageChange(index, "contact") : 
-                     handleOnClick(index) : handleOnClick(index)
-                
-                }s>
+                    ${pageState === "about" && index === columns * 4 + 1 ? "z-[10]" : "z-[0] scatter"}
+                    ${splashState ? "before:inset-[0px] border-[rgb(40,40,40)] border-[0.5px] before:bg-[rgb(20,20,20,0.99)]" : "before:inset-[0.5px] before:bg-[rgb(20,20,20,0.8)] z-[0]"}`} 
+                    onClick={(e) => selectAction(index)}
+                >
                     {!splashState ? index === columns + 1 ? <p className='absolute delay-100ms text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>B</p> : 
                     index === columns + 2 ? <p className='absolute delay-200ms text-white font-["Orbitron"] font-[900]  text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>a</p> :
                     index === columns + 3 ? <p className='absolute delay-300ms text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>v</p> :
@@ -264,6 +296,7 @@ const TilesHeader = () => {
                     {!splashState ? pageState === "" && loadState === false && index === columns * 6 + 1 ? <p className={`${textVanish ? 'fontDisappear-500ms' : "delay-0ms"} absolute text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 group-hover:translate-x-[-75%] group-hover:translate-y-[-75%] transition-transform origin-center duration-150`}><IoSquareSharp/></p> : "" : ""}
                     {!splashState ? pageState === "" && loadState === false && index === columns * 8 + 1 ? <p className={`${textVanish ? 'fontDisappear-500ms' : "delay-0ms"} absolute text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-150 group-hover:translate-x-[-75%] group-hover:translate-y-[-75%] transition-transform origin-center duration-150`}><IoSquareSharp/></p> : "" : ""}
                     
+                    {/* HOME */}
                         {!splashState ? pageState === "" && loadState === false ? index === columns * 6 + 2 ? <p className={`${textVanish ? 'animateDisappear-500ms' : "delay-0ms"} absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]`}>P</p> : 
                         index === columns * 6 + 3 ? <p className={`${textVanish ? 'animateDisappear-500ms' : "delay-100ms"} absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]`}>R</p> :
                         index === columns * 6 + 4 ? <p className={`${textVanish ? 'animateDisappear-500ms' : "delay-200ms"} absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]`}>O</p> :
@@ -290,6 +323,36 @@ const TilesHeader = () => {
                         index === columns * 8 + 7 ? <p className={`${textVanish ? 'animateDisappear-500ms' : "delay-500ms"} absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]`}>C</p> :
                         index === columns * 8 + 8 ? <p className={`${textVanish ? 'animateDisappear-500ms' : "delay-600ms"} absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]`}>T</p> : "" : "" : ""
                         }
+
+                    {/* ABOUT */}
+                    {!splashState && pageState === "about" && loadState === false && index === columns * 4 + 1 ? 
+                    
+                    <div 
+                        style={{
+                            width:`${document.body.clientWidth - sizeMultiplier * 2}px`,
+                            height:`${document.body.clientWidth >= 560 ? sizeMultiplier * 3 : sizeMultiplier * 7}px`,
+                            overflowY: 'scroll'
+                        }}
+                        className={`${textVanish ? 'about-animateDisappear-0ms' : "about-delay-0ms"} aboutbox text-white font-["Orbitron"]  tracking-normal md:tracking-[8px] text-sm md:text-md opacity-100 top-[50%] left-[0%] bg-[rgb(20,20,20,0.8)] pl-[18px] border-[var(--g3)] border-[1px] rounded-sm ${document.body.clientWidth <= 560 ? `translate-y-[-16px]` : `translate-y-[-26px]`} p-5 absolute overflow-visible`}
+                    >
+                        <p className={`uppercase font-['Rajdhani'] tracking-wider text-xl md:text-2xl font-black pb-2`}>&lt; Full-stack Developer /&gt;</p> 
+                        {/* <p className={`lowercase text-[10px]`}>&lt;div&gt;</p> */}
+                        <p className={`text-lg md:text-xl font-['Rajdhani'] tracking-normal block pb-4`}>     Software engineer with experience in both <span className='text-[var(--g3)]'>back-end</span> and <span className='text-[var(--g3)]'>front-end</span> development. Aspiring to create software that has a significant impact on society. </p> 
+                        {/* <p className={`text-lg md:text-xl font-['Rajdhani'] tracking-normal block `}>      */}
+                        {/* </p>  */}
+                        {/* <p className={`lowercase text-[10px]`}>&lt;/div&gt;</p> */}
+                        <p className={`uppercase font-['Rajdhani'] tracking-wider text-xl md:text-2xl font-black pb-2`}>&lt; Tech-Stack /&gt;</p> 
+                        {/* <p className={`lowercase text-[10px]`}>&lt;div&gt;</p> */}
+                        <p className={`text-lg md:text-xl font-['Rajdhani'] tracking-normal block pb-2`}>   
+                            <span className='text-[var(--g3)]'>Front-end:</span>
+
+                        </p> 
+                        
+                    </div>
+                    
+                    
+                    : ""} 
+
 
                 </div>;
             })}

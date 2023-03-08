@@ -12,13 +12,13 @@ body, html {
 :root {
   --g1: #DC0000;
   --g2: #520707;
-  --g3: #11998e;
-  --g4: #38ef7d;
+  --g3: #16c599;
+  --g4: #0e5a47;
   --g5: #00d2ff;
   --g6: #3a7bd5;
   --g7: #654ea3;
   --g8: #eaafc8;
-
+  --size: 50;
 }
 
 @keyframes background-pan {
@@ -34,15 +34,6 @@ body, html {
   0% {
     scale: 0;
   }
-  /* 20% {
-    font-size: 0.1
-  }
-  50% {
-    font-size: 0.7
-  } 
-  80% {
-    font-size: 0.9
-  } */
   100% {
     scale: 1;
   }
@@ -61,6 +52,38 @@ body, html {
   }
 }
 
+@keyframes aboutBox {
+  0% {
+    scale: 0;
+    width: 0;
+    height: 0;
+  }
+  10% {
+    scale: 1;
+    width: 0;
+    height: 0;
+  }
+  50%, 60% {
+    height: 0;
+  }
+}
+@keyframes aboutBoxDisappear {
+  50% {
+    height: 0;
+    scale: 1;
+  }
+  95% {
+    height: 0;
+    width: 0;
+    scale: 1;
+  }
+  100% {
+    scale: 0;
+    height: 0;
+    width: 0;
+  }
+}
+
 /* .tile p {
   
   animation: appear 0.5s ease-out 1;
@@ -68,7 +91,7 @@ body, html {
   
 } */
 
-
+/* HOME TEXT ENTRY & EXIT ANIMATIONS */
 
 .delay-0ms {
   /* font-size: 0; */
@@ -219,6 +242,22 @@ body, html {
   transform-origin: 0% 0%;
 }
 
+/* ABOUT TEXT ENTRY & EXIT ANIMATIONS */
+.about-delay-0ms {
+  /* font-size: 0; */
+  animation: aboutBox 1s 1;
+  animation-fill-mode: forwards;
+  transform-origin: left 0%;
+  animation-delay: 0ms;
+  animation-timing-function: cubic-bezier(0.9, 0, 0.1, 1);
+}
+.about-animateDisappear-0ms {
+  animation: aboutBoxDisappear 1s 1;
+  animation-fill-mode: forwards;
+  transform-origin: left 0%;
+  animation-timing-function: cubic-bezier(0.9, 0, 0.1, 1);
+}
+
 .tiles {
   animation: background-pan 5s linear infinite;
   /* background: linear-gradient(
@@ -246,6 +285,7 @@ body, html {
   content: "";
   position: absolute;
   transition: 0.2s ease;
+  
 }
 
 .tile:hover:before {
@@ -264,4 +304,22 @@ body, html {
 .tile:active:before {
   opacity: 0.7;
   transition: 0.1s ease;
+}
+
+.aboutbox::-webkit-scrollbar {
+  /* display: none; */
+  width: 10px;
+}
+.aboutbox::-webkit-scrollbar-track {
+  /* display: none; */
+  background: #20202000;
+}
+.aboutbox::-webkit-scrollbar-thumb {
+  /* display: none; */
+  background: var(--g3);
+}
+
+.aboutbox {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
