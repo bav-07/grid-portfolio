@@ -1,10 +1,32 @@
 import anime from 'animejs/lib/anime.es.js';
 import { useState } from 'react';
 import { Link } from "react-router-dom";
-import { IoLogoLinkedin, IoLogoYoutube, IoNuclearOutline, IoSquareSharp } from "react-icons/io5";
-import { IoLogoGithub } from "react-icons/io5"
+import { IoLogoLinkedin, IoLogoYoutube, IoLogoGithub, IoSquareSharp } from "react-icons/io5";
+import { SiReact, SiJavascript, SiHtml5, SiCss3, SiTailwindcss, SiNextdotjs, SiMui, SiSpring, SiPostgresql } from "react-icons/si"
+import { FaJava } from "react-icons/fa"
 import { easings } from 'animejs';
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
+import Zoom from '@mui/material/Zoom'
 
+const CyberTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} arrow classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.arrow}`]: {
+      color: 'var(--g3)',
+      
+    },
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: 'rgb(20,20,20,1)',
+      border: '1px solid var(--g3)',
+      fontSize: '1rem',
+      backdropBlur: '4px',
+      fontFamily: '"Rajdhani"',
+      borderRadius: '0px',
+      animation: 'bobbing 1s ease-out infinite',
+    },
+  }));
 
 const TilesHeader = () => {
     
@@ -330,7 +352,7 @@ const TilesHeader = () => {
                     <div 
                         style={{
                             width:`${document.body.clientWidth - sizeMultiplier * 2}px`,
-                            height:`${document.body.clientWidth >= 560 ? sizeMultiplier * 3 : sizeMultiplier * 7}px`,
+                            height:`${document.body.clientWidth >= 560 ? sizeMultiplier * 4.25 : sizeMultiplier * 7}px`,
                             overflowY: 'scroll'
                         }}
                         className={`${textVanish ? 'about-animateDisappear-0ms' : "about-delay-0ms"} aboutbox text-white font-["Orbitron"]  tracking-normal md:tracking-[8px] text-sm md:text-md opacity-100 top-[50%] left-[0%] bg-[rgb(20,20,20,0.8)] pl-[18px] border-[var(--g3)] border-[1px] rounded-sm ${document.body.clientWidth <= 560 ? `translate-y-[-16px]` : `translate-y-[-26px]`} p-5 absolute overflow-visible`}
@@ -343,9 +365,21 @@ const TilesHeader = () => {
                         {/* <p className={`lowercase text-[10px]`}>&lt;/div&gt;</p> */}
                         <p className={`uppercase font-['Rajdhani'] tracking-wider text-xl md:text-2xl font-black pb-2`}>&lt; Tech-Stack /&gt;</p> 
                         {/* <p className={`lowercase text-[10px]`}>&lt;div&gt;</p> */}
-                        <p className={`text-lg md:text-xl font-['Rajdhani'] tracking-normal block pb-2`}>   
-                            <span className='text-[var(--g3)]'>Front-end:</span>
-
+                        <p className={`text-lg flex gap-3 items-start md:text-xl font-['Rajdhani'] tracking-normal pb-2`}>   
+                            <span className='text-[var(--g3)] whitespace-nowrap leading-5'>Front-end:</span>
+                            <CyberTooltip TransitionComponent={Zoom} placement="top" title="React"><p><SiReact/></p></CyberTooltip>
+                            <CyberTooltip TransitionComponent={Zoom} placement="top" title="JavaScript"><p><SiJavascript/></p></CyberTooltip>
+                            <CyberTooltip TransitionComponent={Zoom} placement="top" title="HTML5"><p><SiHtml5/></p></CyberTooltip>
+                            <CyberTooltip TransitionComponent={Zoom} placement="top" title="CSS3"><p><SiCss3/></p></CyberTooltip>
+                            <CyberTooltip TransitionComponent={Zoom} placement="top" title="TailwindCSS"><p><SiTailwindcss/></p></CyberTooltip>
+                            <CyberTooltip TransitionComponent={Zoom} placement="top" title="Material UI"><p><SiMui/></p></CyberTooltip>
+                            <CyberTooltip TransitionComponent={Zoom} placement="top" title="Next.js"><p><SiNextdotjs/></p></CyberTooltip>
+                        </p> 
+                        <p className={`text-lg flex gap-3 items-start md:text-xl font-['Rajdhani'] tracking-normal pb-2`}>   
+                            <span className='text-[var(--g3)] leading-5'>Back-end: </span>
+                            <CyberTooltip TransitionComponent={Zoom} placement="bottom" title="Java"><p><FaJava/></p></CyberTooltip>
+                            <CyberTooltip TransitionComponent={Zoom} placement="bottom" title="Spring"><p><SiSpring/></p></CyberTooltip>
+                            <CyberTooltip TransitionComponent={Zoom} placement="bottom" title="PostgreSQL"><p><SiPostgresql/></p></CyberTooltip>
                         </p> 
                         
                     </div>
