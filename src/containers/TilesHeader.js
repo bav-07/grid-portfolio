@@ -293,7 +293,7 @@ const TilesHeader = () => {
             {Array.from(Array(columns * rows)).map((tile, index) => {
                 return <div className={`tile group
                     ${pageState === "about" && (index === columns * 4 + 1 ||  index === columns * (3 + Math.ceil((rows - 4) / 2)) + 1) ? "z-[10]" : "z-[0] scatter"}
-                    ${splashState ? "before:inset-[0px] border-[rgb(40,40,40)] border-[0.5px] before:bg-[rgb(20,20,20,0.99)]" : "before:inset-[0.5px] before:bg-[rgb(20,20,20,0.8)] z-[0]"}`} 
+                    ${splashState ? "before:inset-[0px] border-[rgb(40,40,40)] before:bg-[rgb(20,20,20,0.99)]" : "before:inset-[0.5px] before:bg-[rgb(20,20,20,0.8)] z-[0]"}`} 
                     onClick={(e) => selectAction(index)}
                 >
                     {!splashState ? index === columns + 1 ? <p className='absolute delay-100ms text-white font-["Orbitron"] font-[900] text-lg md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>B</p> : 
