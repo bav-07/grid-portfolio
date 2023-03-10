@@ -267,6 +267,24 @@ body, html {
   animation-timing-function: cubic-bezier(0.9, 0, 0.1, 1);
 }
 
+.timelineComp {
+  position: relative;
+}
+
+.timelineCompAfter {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  height: 100px;
+  width: 10px;
+  background: linear-gradient(
+    180,
+    #16c599,
+    #16c59900
+  );
+  content: none;
+}
+
 .tiles {
   animation: background-pan 5s linear infinite;
   /* background: linear-gradient(
