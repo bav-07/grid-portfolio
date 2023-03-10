@@ -367,19 +367,19 @@ const TilesHeader = () => {
                         {/* <p className={`lowercase text-[10px]`}>&lt;div&gt;</p> */}
                         <p className={`text-lg flex gap-3 items-start md:text-xl font-['Rajdhani'] tracking-normal pb-2`}>   
                             <span className='text-[var(--g3)] whitespace-nowrap leading-5'>Front-end:</span>
-                            <CyberTooltip TransitionComponent={Zoom} placement="top" title="React"><p><SiReact/></p></CyberTooltip>
-                            <CyberTooltip TransitionComponent={Zoom} placement="top" title="JavaScript"><p><SiJavascript/></p></CyberTooltip>
-                            <CyberTooltip TransitionComponent={Zoom} placement="top" title="HTML5"><p><SiHtml5/></p></CyberTooltip>
-                            <CyberTooltip TransitionComponent={Zoom} placement="top" title="CSS3"><p><SiCss3/></p></CyberTooltip>
-                            <CyberTooltip TransitionComponent={Zoom} placement="top" title="TailwindCSS"><p><SiTailwindcss/></p></CyberTooltip>
-                            <CyberTooltip TransitionComponent={Zoom} placement="top" title="Material UI"><p><SiMui/></p></CyberTooltip>
-                            <CyberTooltip TransitionComponent={Zoom} placement="top" title="Next.js"><p><SiNextdotjs/></p></CyberTooltip>
+                            <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="React"><p><SiReact/></p></CyberTooltip>
+                            <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="JavaScript"><p><SiJavascript/></p></CyberTooltip>
+                            <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="HTML5"><p><SiHtml5/></p></CyberTooltip>
+                            <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="CSS3"><p><SiCss3/></p></CyberTooltip>
+                            <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="TailwindCSS"><p><SiTailwindcss/></p></CyberTooltip>
+                            <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="Material UI"><p><SiMui/></p></CyberTooltip>
+                            <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="Next.js"><p><SiNextdotjs/></p></CyberTooltip>
                         </p> 
                         <p className={`text-lg flex gap-3 items-start md:text-xl font-['Rajdhani'] tracking-normal pb-2`}>   
                             <span className='text-[var(--g3)] leading-5'>Back-end: </span>
-                            <CyberTooltip TransitionComponent={Zoom} placement="bottom" title="Java"><p><FaJava/></p></CyberTooltip>
-                            <CyberTooltip TransitionComponent={Zoom} placement="bottom" title="Spring"><p><SiSpring/></p></CyberTooltip>
-                            <CyberTooltip TransitionComponent={Zoom} placement="bottom" title="PostgreSQL"><p><SiPostgresql/></p></CyberTooltip>
+                            <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="bottom" title="Java"><p><FaJava/></p></CyberTooltip>
+                            <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="bottom" title="Spring"><p><SiSpring/></p></CyberTooltip>
+                            <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="bottom" title="PostgreSQL"><p><SiPostgresql/></p></CyberTooltip>
                         </p> 
                         
                     </div>
