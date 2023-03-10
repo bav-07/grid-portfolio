@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { IoLogoLinkedin, IoLogoYoutube, IoLogoGithub, IoSquareSharp } from "react-icons/io5";
 import { SiReact, SiJavascript, SiHtml5, SiCss3, SiTailwindcss, SiNextdotjs, SiMui, SiSpring, SiPostgresql } from "react-icons/si"
-import { FaJava } from "react-icons/fa"
+import { FaHome, FaJava } from "react-icons/fa"
 import { easings } from 'animejs';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
@@ -254,16 +254,19 @@ const TilesHeader = () => {
         else if (pageState === "about") { 
             index >= columns + 1 && index <= columns + 3 ? handlePageChange(index, "") :
             index >= columns * 2 + 1 && index <= columns * 2 + 9 ? handlePageChange(index, "") :
+            index === columns * (rows - 2) + 1 ? handlePageChange(index, "") :
             handleOnClick(index)
         }
         else if (pageState === "projects") { 
             index >= columns + 1 && index <= columns + 3 ? handlePageChange(index, "") :
             index >= columns * 2 + 1 && index <= columns * 2 + 9 ? handlePageChange(index, "") :
+            index === columns * (rows - 2) + 1 ? handlePageChange(index, "") :
             handleOnClick(index)
         }
         else if (pageState === "contact") { 
             index >= columns + 1 && index <= columns + 3 ? handlePageChange(index, "") :
             index >= columns * 2 + 1 && index <= columns * 2 + 9 ? handlePageChange(index, "") :
+            index === columns * (rows - 2) + 1 ? handlePageChange(index, "") :
             handleOnClick(index)
         }
         else {
@@ -292,7 +295,8 @@ const TilesHeader = () => {
             className={`tiles h-[100vh] w-[100vw]`}>
             {Array.from(Array(columns * rows)).map((tile, index) => {
                 return <div className={`tile group
-                    ${pageState === "about" && (index === columns * 4 + 1 ||  index === columns * (3 + Math.ceil((rows - 4) / 2)) + 1) ? "z-[10]" : "z-[0] scatter"}
+                    ${pageState === "about" && document.body.clientWidth <= 560 && (index === columns * 4 + 1 ||  index === columns * (3 + Math.ceil((rows - 4) / 2)) + 1) ? "z-[10]" : "z-[0] scatter"}
+                    ${pageState === "about" && document.body.clientWidth > 560 && (index === columns * 4 + 1 ||  index === columns * 4 + (Math.ceil((columns - 2)/2 + 1))) ? "z-[10]" : "z-[0] scatter"}
                     ${splashState ? "before:inset-[0px] border-[rgb(40,40,40)] before:bg-[rgb(20,20,20,0.99)]" : "before:inset-[0.5px] before:bg-[rgb(20,20,20,0.8)] z-[0]"}`} 
                     onClick={(e) => selectAction(index)}
                 >
@@ -351,8 +355,8 @@ const TilesHeader = () => {
                     
                     <div 
                         style={{
-                            width:`${document.body.clientWidth - sizeMultiplier * 2 - 2}px`,
-                            height:`${document.body.clientWidth >= 560 ? sizeMultiplier * ((rows-4)/2 - 0.75) : sizeMultiplier * ((rows-4)/2 - 0.75)}px`,
+                            width:`${document.body.clientWidth >= 560 ? (Math.ceil((columns - 2) / 2) - 1) * (document.body.clientWidth / columns) : document.body.clientWidth - (document.body.clientWidth / columns) * 2 - 2}px`,
+                            height:`${document.body.clientWidth >= 560 ? (document.body.clientHeight / rows) * ((rows-4) - 3) : (document.body.clientHeight / rows) * ((rows-4)/2 - 2)}px`,
                             overflowY: 'scroll'
                         }}
                         className={`${textVanish ? 'about-animateDisappear-0ms' : "about-delay-0ms"} aboutbox text-white font-["Orbitron"]  tracking-normal md:tracking-[8px] text-sm md:text-md opacity-100 top-[50%] left-[0%] bg-[rgb(20,20,20,0.8)] pl-[18px] border-[var(--g3)] border-[1px] rounded-sm ${document.body.clientWidth <= 560 ? `translate-y-[-16px]` : `translate-y-[-26px]`} p-5 absolute overflow-visible`}
@@ -387,19 +391,19 @@ const TilesHeader = () => {
                     
                     : ""} 
 
-                    {!splashState && pageState === "about" && loadState === false && index === columns * (3 + Math.ceil((rows - 4) / 2)) + 1 ? 
+                    {!splashState && pageState === "about" && loadState === false && ((index === columns * (3 + Math.ceil((rows - 4) / 2)) + 1 && document.body.clientWidth <= 560) || (index === columns * 4 + (Math.ceil((columns-2)/2 + 1)) && document.body.clientWidth > 560))  ? 
                     
                     <div 
                         style={{
-                            width:`${document.body.clientWidth - sizeMultiplier * 2 - 2}px`,
-                            height:`${document.body.clientWidth >= 560 ? sizeMultiplier * ((rows-4)/2 - 0.75) : sizeMultiplier * ((rows-4)/2 - 0.75)}px`,
+                            width:`${document.body.clientWidth >= 560 ? (Math.floor((columns - 2) / 2)) * (document.body.clientWidth / columns) : document.body.clientWidth - (document.body.clientWidth / columns) * 2 - 2}px`,
+                            height:`${document.body.clientWidth >= 560 ? (document.body.clientHeight / rows) * ((rows-4) - 3)  : (document.body.clientHeight / rows) * Math.floor((rows-4)/2 - 2)}px`,
                             overflowY: 'scroll'
                         }}
                         className={`${textVanish ? 'about-animateDisappear-0ms' : "about-delay-0ms"} aboutbox text-white font-["Rajdhani"]  tracking-normal text-sm md:text-md opacity-100 top-[50%] left-[0%] bg-[rgb(20,20,20,0.8)] pl-[18px] border-[var(--g3)] border-[1px] rounded-sm ${document.body.clientWidth <= 560 ? `translate-y-[-16px]` : `translate-y-[-26px]`} p-5 absolute overflow-visible`}
                     >
                         <p className={`uppercase font-['Rajdhani'] tracking-wider text-xl md:text-2xl font-black pb-4`}>&lt; Timeline /&gt;</p>                         
                         <ul className='flex flex-col gap-5'>
-                            <div className='grid grid-cols-[4fr_1fr_4fr] md:grid-cols-[4fr_1fr_8fr]'>
+                            <div className='grid grid-cols-[4fr_1.5fr_4fr] md:grid-cols-[4fr_60px_8fr]'>
                                 <div className='text-end'>
                                     <p className={`uppercase font-['Rajdhani'] tracking-wider text-md md:text-lg md:leading-[-20px] font-[500] -pb-2`}>Software Engineering Associate</p>                         
                                     <p className={` font-['Rajdhani'] tracking-wider text-md md:text-lg md:leading-[-20px] font-[400] text-[var(--g3)]`}>@ Lloyds Banking Group</p>                         
@@ -417,7 +421,7 @@ const TilesHeader = () => {
                                     </ul>
                                 </div>
                             </div>
-                            <div className='grid grid-cols-[4fr_1fr_4fr] md:grid-cols-[4fr_1fr_8fr]'>
+                            <div className='grid grid-cols-[4fr_1.5fr_4fr] md:grid-cols-[4fr_60px_8fr]'>
                                 <div className='text-end'>
                                     <p className={`uppercase font-['Rajdhani'] tracking-wider text-md md:text-lg md:leading-[-20px] font-[500] -pb-2`}>Trainee Software Engineer</p>                         
                                     <p className={` font-['Rajdhani'] tracking-wider text-md md:text-lg md:leading-[-20px] font-[400] text-[var(--g3)]`}>@ Bright Network Technology Academy</p>                         
@@ -445,7 +449,7 @@ const TilesHeader = () => {
                                     </ul>
                                 </div>
                             </div>
-                            <div className='grid grid-cols-[4fr_1fr_4fr] md:grid-cols-[4fr_1fr_8fr]'>
+                            <div className='grid grid-cols-[4fr_1.5fr_4fr] md:grid-cols-[4fr_60px_8fr]'>
                                 <div className='text-end'>
                                     <p className={`uppercase font-['Rajdhani'] tracking-wider text-md md:text-lg md:leading-[-20px] font-[500] -pb-2`}>Masters' in Mechanical Engineering</p>                         
                                     <p className={` font-['Rajdhani'] tracking-wider text-md md:text-lg md:leading-[-20px] font-[400] text-[var(--g3)]`}>@ Imperial College London</p>                         
@@ -475,6 +479,19 @@ const TilesHeader = () => {
                     
                     : ""} 
 
+                    {/* PROJECTS */}
+
+
+                    {/* CONTACT */}
+
+                    {!splashState && (pageState === "about" || pageState === "projects" || pageState === "contact") && loadState === false ?
+                    
+                        index === columns * (rows - 2) + 1 ? <p  className={`${textVanish ? 'fontDisappear-500ms' : "delay-500ms"} absolute text-white font-["Orbitron"] text-xl md:text-3xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:scale-[130%] group-hover:translate-x-[-65%] group-hover:translate-y-[-65%] transition-transform origin-center duration-150`}><FaHome/></p> :
+                        index === columns * (rows - 2) + 2 ? <p className={`${textVanish ? 'animateDisappear-500ms' : "delay-600ms"} absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]`}>H</p> :
+                        index === columns * (rows - 2) + 3 ? <p className={`${textVanish ? 'animateDisappear-500ms' : "delay-700ms"} absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]`}>O</p> :
+                        index === columns * (rows - 2) + 4 ? <p className={`${textVanish ? 'animateDisappear-500ms' : "delay-800ms"} absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]`}>M</p> :
+                        index === columns * (rows - 2) + 5 ? <p className={`${textVanish ? 'animateDisappear-500ms' : "delay-900ms"} absolute text-white font-["Orbitron"] text-md md:text-xl opacity-70 uppercase z-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]`}>E</p> : "" 
+                    : "" }    
 
                 </div>;
             })}
