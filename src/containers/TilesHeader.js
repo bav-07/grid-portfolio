@@ -295,8 +295,7 @@ const TilesHeader = () => {
             className={`tiles h-[100vh] w-[100vw]`}>
             {Array.from(Array(columns * rows)).map((tile, index) => {
                 return <div className={`tile group
-                    ${pageState === "about" && document.body.clientWidth <= 560 && (index === columns * 4 + 1 ||  index === columns * (3 + Math.ceil((rows - 4) / 2)) + 1) ? "z-[10]" : "z-[0] scatter"}
-                    ${pageState === "about" && document.body.clientWidth > 560 && (index === columns * 4 + 1 ||  index === columns * 4 + (Math.ceil((columns - 2)/2 + 1))) ? "z-[10]" : "z-[0] scatter"}
+                    ${pageState === "about" && (document.body.clientWidth <= 560 && (index === columns * 4 + 1 ||  index === columns * (3 + Math.ceil((rows - 4) / 2)) + 1)) || document.body.clientWidth > 560 && (index === columns * 4 + 1 ||  index === columns * 4 + (Math.ceil((columns - 2)/2 + 1))) ? "z-[10]" : "z-[0] scatter"}
                     ${splashState ? "before:inset-[0px] border-[rgb(40,40,40)] before:bg-[rgb(20,20,20,0.99)]" : "before:inset-[0.5px] before:bg-[rgb(20,20,20,0.8)] z-[0]"}`} 
                     onClick={(e) => selectAction(index)}
                 >
