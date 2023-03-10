@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/grid-portfolio/static/css/main.e35c2294.css",
-    "main.js": "/grid-portfolio/static/js/main.c9535415.js",
+    "main.js": "/grid-portfolio/static/js/main.a7b37da8.js",
     "static/js/787.48f82f8c.chunk.js": "/grid-portfolio/static/js/787.48f82f8c.chunk.js",
     "static/media/logo.svg": "/grid-portfolio/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/grid-portfolio/index.html",
     "main.e35c2294.css.map": "/grid-portfolio/static/css/main.e35c2294.css.map",
-    "main.c9535415.js.map": "/grid-portfolio/static/js/main.c9535415.js.map",
+    "main.a7b37da8.js.map": "/grid-portfolio/static/js/main.a7b37da8.js.map",
     "787.48f82f8c.chunk.js.map": "/grid-portfolio/static/js/787.48f82f8c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e35c2294.css",
-    "static/js/main.c9535415.js"
+    "static/js/main.a7b37da8.js"
   ]
 }
