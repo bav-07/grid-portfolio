@@ -37,6 +37,7 @@ const TilesHeader = () => {
     let [textVanish, setTextVanish] = useState(false);
     let [splashState, setSplashState] = useState(true);
     let [sizeMultiplier, setSizeMultiplier] = useState(null);
+    let [project, setProject] = useState('');
 
     window.onresize = () => {
         if (document.body.clientWidth <= 560) {
@@ -202,6 +203,7 @@ const TilesHeader = () => {
             const timeout2 = setTimeout(() => {
                 setLoadState(false)
                 setTextVanish(false)
+                setProject("");
             }, 50*columns + 1500 );
 
         } else {
@@ -218,6 +220,7 @@ const TilesHeader = () => {
             const timeout2 = setTimeout(() => {
                 setLoadState(false)
                 setTextVanish(false)
+                setProject("");
             }, 50*columns + 1500 );
         }
         
@@ -295,7 +298,8 @@ const TilesHeader = () => {
             className={`tiles h-[100vh] w-[100vw]`}>
             {Array.from(Array(columns * rows)).map((tile, index) => {
                 return <div className={`tile group
-                    ${pageState === "about" && (document.body.clientWidth <= 560 && (index === columns * 4 + 1 ||  index === columns * (3 + Math.ceil((rows - 4) / 2)) + 1)) || document.body.clientWidth > 560 && (index === columns * 4 + 1 ||  index === columns * 4 + (Math.ceil((columns - 2)/2 + 1))) ? "z-[10]" : "z-[0] scatter"}
+                    ${pageState === "about" ? (document.body.clientWidth <= 560 && (index === columns * 4 + 1 ||  index === columns * (3 + Math.ceil((rows - 4) / 2)) + 1)) || document.body.clientWidth > 560 && (index === columns * 4 + 1 ||  index === columns * 4 + (Math.ceil((columns - 2)/2 + 1))) ? "z-[10]" : "z-[0] scatter" : ""}
+                    ${pageState === "projects" ? (document.body.clientWidth <= 560 && (index === columns * 4 + 1 ||  index === columns * (1 + Math.ceil((rows - 4) / 2)) + 1)) || document.body.clientWidth > 560 && (index === columns * 4 + 1 ||  index === columns * 4 + (Math.ceil((columns-2)/2 + 1))+3) ? "z-[10]" : "z-[0] scatter" : ""}
                     ${splashState ? "before:inset-[0px] border-[rgb(40,40,40)] before:bg-[rgb(20,20,20,0.99)]" : "before:inset-[0.5px] before:bg-[rgb(20,20,20,0.8)] z-[0]"}`} 
                     onClick={(e) => selectAction(index)}
                 >
@@ -479,7 +483,72 @@ const TilesHeader = () => {
                     : ""} 
 
                     {/* PROJECTS */}
+                    {!splashState && pageState === "projects" && loadState === false && index === columns * 4 + 1 ? 
+                    
+                    <div 
+                        style={{
+                            width:`${document.body.clientWidth >= 560 ? (Math.ceil((columns - 2) / 2) + 2) * (document.body.clientWidth / columns) : document.body.clientWidth - (document.body.clientWidth / columns) * 2 - 2}px`,
+                            height:`${document.body.clientWidth >= 560 ? (document.body.clientHeight / rows) * ((rows-4) - 3) : (document.body.clientHeight / rows) * ((rows-4)/2 - 4)}px`,
+                            overflowY: 'scroll'
+                        }}
+                        className={`${textVanish ? 'about-animateDisappear-0ms' : "about-delay-0ms"} projectbox text-white font-["Orbitron"]  tracking-normal md:tracking-[8px] text-sm md:text-md opacity-100 top-[50%] left-[0%] bg-[rgb(20,20,20,0.8)] pl-[18px] border-[var(--g5)] border-[1px] rounded-sm ${document.body.clientWidth <= 560 ? `translate-y-[-16px]` : `translate-y-[-26px]`} p-5 absolute overflow-visible`}
+                    >
+                        <ul className='flex flex-col gap-2 md:gap-5'>
+                            <li onMouseOver={() => setProject("kabutops")} className='transition-all duration-300'>
+                                <p className={`hover:text-transparent bg-clip-text animate-text-moving-background bg-gradient-to-r from-[var(--g5)] to-[var(--g6)] transition-all duration-300 uppercase font-['Orbitron'] tracking-wider text-xl md:text-4xl font-300`}>Kabutops Trumps</p>
+                                <p className={`uppercase font-['Rajdhani'] tracking-wider text-md md:text-xl font-300 pb-2`}>Browser-based Card-Battle Game</p>
+                            </li>
+                            <li onMouseOver={() => setProject("notimdb")} className='transition-all duration-300'>
+                                <p className={`hover:text-transparent bg-clip-text animate-text-moving-background bg-gradient-to-r from-[var(--g5)] to-[var(--g6)] transition-all duration-300 uppercase font-['Orbitron'] tracking-wider text-xl md:text-4xl font-300`}>notIMDB</p>
+                                <p className={`uppercase font-['Rajdhani'] tracking-wider text-md md:text-xl font-300 pb-2`}>Movies Review Website</p>
+                            </li>
+                            <li onMouseOver={() => setProject("pokeapi")} className='transition-all duration-300'>
+                                <p className={`hover:text-transparent bg-clip-text animate-text-moving-background bg-gradient-to-r from-[var(--g5)] to-[var(--g6)] transition-all duration-300 uppercase font-['Orbitron'] tracking-wider text-xl md:text-4xl font-300`}>Who's That Pok&eacute;mon?</p>
+                                <p className={`uppercase font-['Rajdhani'] tracking-wider text-md md:text-xl font-300 pb-2`}>Pok&eacute;mon Guessing Game using Pok&eacute;API</p>
+                            </li>
+                            <li onMouseOver={() => setProject("bookapi")} className='transition-all duration-300'>
+                                <p className={`hover:text-transparent bg-clip-text animate-text-moving-background bg-gradient-to-r from-[var(--g5)] to-[var(--g6)] transition-all duration-300 uppercase font-['Orbitron'] tracking-wider text-xl md:text-4xl font-300`}>Biblion</p>
+                                <p className={`uppercase font-['Rajdhani'] tracking-wider text-md md:text-xl font-300 pb-2`}>RESTful API for searching and reviewing books</p>
+                            </li>
+                            <li onMouseOver={() => setProject("restcountries")} className='transition-all duration-300'>
+                                <p className={`hover:text-transparent bg-clip-text animate-text-moving-background bg-gradient-to-r from-[var(--g5)] to-[var(--g6)] transition-all duration-300 uppercase font-['Orbitron'] tracking-wider text-xl md:text-4xl font-300`}>RESTCountries Selector</p>
+                                <p className={`uppercase font-['Rajdhani'] tracking-wider text-md md:text-xl font-300 pb-2`}>Search for Countries using RestCountriesAPI</p>
+                            </li>
+                            <li onMouseOver={() => setProject("vibapp")} className='transition-all duration-300'>
+                                <p className={`hover:text-transparent bg-clip-text animate-text-moving-background bg-gradient-to-r from-[var(--g5)] to-[var(--g6)] transition-all duration-300 uppercase font-['Orbitron'] tracking-wider text-xl md:text-4xl font-300`}>ME2 Vibrations App</p>
+                                <p className={`uppercase font-['Rajdhani'] tracking-wider text-md md:text-xl font-300 pb-2`}>Web-app for solving oscillatory systems</p>
+                            </li>
+                            
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    
+                    : ""} 
 
+                    {!splashState && project !== "" && pageState === "projects" && loadState === false && ((index === columns * (1 + Math.ceil((rows - 4) / 2)) + 1 && document.body.clientWidth <= 560) || (index === columns * 4 + (Math.ceil((columns-2)/2 + 1))+3 && document.body.clientWidth > 560))  ? 
+                    
+                    <div 
+                        style={{
+                            width:`${document.body.clientWidth >= 560 ? (Math.floor((columns - 2) / 2) - 3) * (document.body.clientWidth / columns) : document.body.clientWidth - (document.body.clientWidth / columns) * 2 - 2}px`,
+                            height:`${document.body.clientWidth >= 560 ? (document.body.clientHeight / rows) * ((rows-4) - 3)  : (document.body.clientHeight / rows) * Math.floor((rows-4)/2 )}px`,
+                            overflowY: 'scroll'
+                        }}
+                        className={`${textVanish ? 'about-animateDisappear-0ms' : "about-delay-0ms"} projectbox text-white font-["Rajdhani"]  tracking-normal text-sm md:text-md opacity-100 top-[50%] left-[0%] bg-[rgb(20,20,20,0.8)] pl-[18px] border-[var(--g5)] border-[1px] rounded-sm ${document.body.clientWidth <= 560 ? `translate-y-[-16px]` : `translate-y-[-26px]`} p-5 absolute overflow-visible`}
+                    >
+                        {project === "kabutops" ? 
+                        <div>
+                        <img></img>
+                        <p>Kabutops Trumps</p>
+                        <p></p> 
+                        </div>
+                        : <></> }
+                              
+                    </div>
+                    
+                    
+                    : ""} 
 
                     {/* CONTACT */}
 

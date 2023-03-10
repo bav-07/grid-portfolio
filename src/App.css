@@ -333,6 +333,7 @@ body, html {
   transition: 0.1s ease;
 }
 
+/* ABOUT BOX */
 .aboutbox::-webkit-scrollbar {
   /* display: none; */
   width: 10px;
@@ -345,8 +346,25 @@ body, html {
   /* display: none; */
   background: var(--g3);
 }
-
 .aboutbox {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* PROJECT BOX */
+.projectbox::-webkit-scrollbar {
+  /* display: none; */
+  width: 10px;
+}
+.projectbox::-webkit-scrollbar-track {
+  /* display: none; */
+  background: #20202000;
+}
+.projectbox::-webkit-scrollbar-thumb {
+  /* display: none; */
+  background: var(--g5);
+}
+.projectbox {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
