@@ -9,6 +9,7 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom'
+import kabutops from '../images/kabutops.png'
 
 const CyberTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} arrow classes={{ popper: className }} />
@@ -535,11 +536,11 @@ const TilesHeader = () => {
                             height:`${document.body.clientWidth >= 560 ? (document.body.clientHeight / rows) * ((rows-4) - 3)  : (document.body.clientHeight / rows) * Math.floor((rows-4)/2 )}px`,
                             overflowY: 'scroll'
                         }}
-                        className={`${textVanish ? 'about-animateDisappear-0ms' : "about-delay-0ms"} projectbox text-white font-["Rajdhani"]  tracking-normal text-sm md:text-md opacity-100 top-[50%] left-[0%] bg-[rgb(20,20,20,0.8)] pl-[18px] border-[var(--g5)] border-[1px] rounded-sm ${document.body.clientWidth <= 560 ? `translate-y-[-16px]` : `translate-y-[-26px]`} p-5 absolute overflow-visible`}
+                        className={`${textVanish ? 'about-animateDisappear-0ms' : "about-delay-0ms"} projectbox text-white font-["Rajdhani"]  tracking-normal text-sm md:text-md opacity-100 top-[50%] left-[0%] bg-[rgb(20,20,20,0.8)] border-[var(--g5)] border-[1px] rounded-sm ${document.body.clientWidth <= 560 ? `translate-y-[-16px]` : `translate-y-[-26px]`} pt-0 absolute overflow-visible`}
                     >
                         {project === "kabutops" ? 
                         <div>
-                        <img></img>
+                        <img className='absolute w-[100%] m-0' src={kabutops}></img>
                         <p>Kabutops Trumps</p>
                         <p></p> 
                         </div>
