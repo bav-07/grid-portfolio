@@ -9,7 +9,7 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom'
-import kabutops from '../videos/kabutops.mov'
+import kabutops from '../images/kabutops.png'
 
 const TilesHeader = () => {
     
@@ -299,6 +299,7 @@ const TilesHeader = () => {
             className={`tiles h-[100vh] w-[100vw]`}>
             {Array.from(Array(columns * rows)).map((tile, index) => {
                 return <div className={`tile group
+                    ${pageState === "" ? "z-[0] scatter" : ""}
                     ${pageState === "about" ? (document.body.clientWidth <= 560 && (index === columns * 4 + 1 ||  index === columns * (3 + Math.ceil((rows - 4) / 2)) + 1)) || document.body.clientWidth > 560 && (index === columns * 4 + 1 ||  index === columns * 4 + (Math.ceil((columns - 2)/2 + 1))) ? "z-[10]" : "z-[0] scatter" : ""}
                     ${pageState === "projects" ? (document.body.clientWidth <= 560 && (index === columns * 4 + 1 ||  index === columns * (1 + Math.ceil((rows - 4) / 2)) + 1)) || document.body.clientWidth > 560 && (index === columns * 4 + 1 ||  index === columns * 3 + (Math.ceil((columns-2)/2 + 1))+3) ? "z-[10]" : "z-[0] scatter" : ""}
                     ${splashState ? "before:inset-[0px] border-[rgb(40,40,40)] before:bg-[rgb(20,20,20,0.99)]" : "before:inset-[0.5px] before:bg-[rgb(20,20,20,0.8)] z-[0]"}`} 
@@ -539,12 +540,16 @@ const TilesHeader = () => {
                         className={`${textVanish ? 'about-animateDisappear-0ms' : "about-delay-0ms"} projectbox text-white font-["Rajdhani"]  tracking-normal text-sm md:text-md opacity-100 top-[50%] left-[0%] bg-[rgb(20,20,20,0.8)] border-[var(--g5)] border-[1px] rounded-sm ${document.body.clientWidth <= 560 ? `translate-y-[-16px]` : `translate-y-[-26px]`} pt-0 absolute overflow-visible`}
                     >
                         {project === "kabutops" ? 
-                        <div className='group opacity-delay-500ms'>
-                            <video className='object-fit h-max m-0 p-0' autoPlay loop muted src={kabutops}/>
-                            <p className='absolute top-0 p-2 pl-3 font-["Orbitron"] tracking-wide w-full text-2xl font-500 bg-[rgb(20,20,20,0.8)]'>Kabutops Trumps</p>
-                            <div className='opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-all duration-100 h-fit w-[100%] absolute bottom-0 p-2'>
-                                <p>A full-stack application, allowing users to collect cards and battle against NPC trainers in 'Top Trumps'-style.</p> 
-                                <p className={`text-lg flex gap-3 items-start md:text-xl font-['Rajdhani'] tracking-normal pb-2`}>   
+                        <>
+                        <img className={`absolute object-cover h-[100%] w-[100%] m-0 p-0`} src={kabutops} alt="Kabutops Trumps gameplay, user VS CPU trainer Red"></img>
+                        <div className={`group opacity-delay-500ms absolute top-0 left-0 bottom-0 right-0`}>
+                            <p className='transition-all duration-100 h-fit scale-y-100 border-b-[1px] border-[var(--g5)] absolute top-0 p-3 pl-4 font-["Orbitron"] tracking-wide w-full text-2xl font-500 bg-[rgb(20,20,20,0.8)] flex flex-row justify-between'><span>Kabutops Trumps</span><span className='float-right my-auto fullscreen text-sm font-["Rajdhani"] text-[var(--g5)] animate-bounce group-hover:opacity-0 transition-all duration-100'>Hover for more</span></p>
+                            <div className='bg-[rgb(20,20,20,0.9)] flex flex-col gap-3 border-t-[1px] border-[var(--g5)] transition-all duration-100 h-fit scale-y-0 group-hover:scale-y-100 group-active:scale-y-100 origin-bottom overflow-y-hidden w-[100%] absolute bottom-0 p-2'>
+                                <p>A full-stack application, allowing users to collect Pok&eacute;mon cards and battle against NPC trainers in 'Top Trumps'-style. </p>
+                                <p>Java + Spring back-end to create, read and update card and user data, as well as to handle game-logic.</p>
+                                <p>React front-end to enable user to battle against CPU trainers.</p> 
+                                <p className={`text-lg flex gap-3 items-start md:text-xl font-['Rajdhani'] tracking-normal pb-2`}>
+                                    <span className={`text-[var(--g5)] text-sm md:text-md`}>Tools:</span>
                                     <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="React"><p><SiReact/></p></CyberTooltip>
                                     <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="JavaScript"><p><SiJavascript/></p></CyberTooltip>
                                     <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="HTML5"><p><SiHtml5/></p></CyberTooltip>
@@ -555,8 +560,16 @@ const TilesHeader = () => {
                                     <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="Spring Boot"><p><SiSpring/></p></CyberTooltip>
                                     <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="PostgreSQL"><p><SiPostgresql/></p></CyberTooltip>
                                 </p>
+                                <p className={`text-lg flex gap-3 items-start text-sm md:text-md font-['Rajdhani'] tracking-normal pb-2`}>
+                                    <span className={`text-[var(--g5)] `}>Collaborators: </span>
+                                    <div className='flex flex-col'>
+                                        <a>Loshanth Selvanayagam</a><a>Eesaa Sheikh</a><a>Shawn Augustine</a><a>Will Stanistreet</a>
+                                    </div>
+                                </p>
+                                
                             </div>
                         </div>
+                        </>
                         : <></> }
                               
                     </div>
