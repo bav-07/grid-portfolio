@@ -39,6 +39,14 @@ body, html {
   }
 }
 
+@keyframes opacityAppear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @keyframes appear {
   0% {
     scale: 0;
@@ -367,4 +375,14 @@ body, html {
 .projectbox {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.opacity-delay-500ms {
+  /* font-size: 0; */
+  opacity: 0;
+  animation: opacityAppear 0.5s ease-out 1;
+  animation-fill-mode: forwards;
+  transform-origin: 0% 0%;
+
+  animation-delay: 100ms;
 }

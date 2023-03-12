@@ -9,25 +9,7 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom'
-import kabutops from '../images/kabutops.png'
-
-const CyberTooltip = styled(({ className, ...props }) => (
-    <Tooltip {...props} arrow classes={{ popper: className }} />
-  ))(({ theme }) => ({
-    [`& .${tooltipClasses.arrow}`]: {
-      color: 'var(--g3)',
-      
-    },
-    [`& .${tooltipClasses.tooltip}`]: {
-      backgroundColor: 'rgb(20,20,20,1)',
-      border: '1px solid var(--g3)',
-      fontSize: '1rem',
-      backdropBlur: '4px',
-      fontFamily: '"Rajdhani"',
-      borderRadius: '0px',
-      animation: 'bobbing 1s ease-out infinite',
-    },
-  }));
+import kabutops from '../videos/kabutops.mov'
 
 const TilesHeader = () => {
     
@@ -39,6 +21,24 @@ const TilesHeader = () => {
     let [splashState, setSplashState] = useState(true);
     let [sizeMultiplier, setSizeMultiplier] = useState(null);
     let [project, setProject] = useState('');
+
+    const CyberTooltip = styled(({ className, ...props }) => (
+        <Tooltip {...props} arrow classes={{ popper: className }} />
+      ))(({ theme }) => ({
+        [`& .${tooltipClasses.arrow}`]: {
+          color: `${pageState === 'about' ? "var(--g3)" : "var(--g5)" }`,
+          
+        },
+        [`& .${tooltipClasses.tooltip}`]: {
+          backgroundColor: 'rgb(20,20,20,1)',
+          border: `1px solid ${pageState === 'about' ? "var(--g3)" : "var(--g5)" }`,
+          fontSize: '1rem',
+          backdropBlur: '4px',
+          fontFamily: '"Rajdhani"',
+          borderRadius: '0px',
+          animation: 'bobbing 1s ease-out infinite',
+        },
+      }));
 
     window.onresize = () => {
         if (document.body.clientWidth <= 560) {
@@ -300,7 +300,7 @@ const TilesHeader = () => {
             {Array.from(Array(columns * rows)).map((tile, index) => {
                 return <div className={`tile group
                     ${pageState === "about" ? (document.body.clientWidth <= 560 && (index === columns * 4 + 1 ||  index === columns * (3 + Math.ceil((rows - 4) / 2)) + 1)) || document.body.clientWidth > 560 && (index === columns * 4 + 1 ||  index === columns * 4 + (Math.ceil((columns - 2)/2 + 1))) ? "z-[10]" : "z-[0] scatter" : ""}
-                    ${pageState === "projects" ? (document.body.clientWidth <= 560 && (index === columns * 4 + 1 ||  index === columns * (1 + Math.ceil((rows - 4) / 2)) + 1)) || document.body.clientWidth > 560 && (index === columns * 4 + 1 ||  index === columns * 4 + (Math.ceil((columns-2)/2 + 1))+3) ? "z-[10]" : "z-[0] scatter" : ""}
+                    ${pageState === "projects" ? (document.body.clientWidth <= 560 && (index === columns * 4 + 1 ||  index === columns * (1 + Math.ceil((rows - 4) / 2)) + 1)) || document.body.clientWidth > 560 && (index === columns * 4 + 1 ||  index === columns * 3 + (Math.ceil((columns-2)/2 + 1))+3) ? "z-[10]" : "z-[0] scatter" : ""}
                     ${splashState ? "before:inset-[0px] border-[rgb(40,40,40)] before:bg-[rgb(20,20,20,0.99)]" : "before:inset-[0.5px] before:bg-[rgb(20,20,20,0.8)] z-[0]"}`} 
                     onClick={(e) => selectAction(index)}
                 >
@@ -528,21 +528,34 @@ const TilesHeader = () => {
                     
                     : ""} 
 
-                    {!splashState && project !== "" && pageState === "projects" && loadState === false && ((index === columns * (1 + Math.ceil((rows - 4) / 2)) + 1 && document.body.clientWidth <= 560) || (index === columns * 4 + (Math.ceil((columns-2)/2 + 1))+3 && document.body.clientWidth > 560))  ? 
+                    {!splashState && project !== "" && pageState === "projects" && loadState === false && ((index === columns * (1 + Math.ceil((rows - 4) / 2)) + 1 && document.body.clientWidth <= 560) || (index === columns * 3 + (Math.ceil((columns-2)/2 + 1))+3 && document.body.clientWidth > 560))  ? 
                     
                     <div 
                         style={{
                             width:`${document.body.clientWidth >= 560 ? (Math.floor((columns - 2) / 2) - 3) * (document.body.clientWidth / columns) : document.body.clientWidth - (document.body.clientWidth / columns) * 2 - 2}px`,
-                            height:`${document.body.clientWidth >= 560 ? (document.body.clientHeight / rows) * ((rows-4) - 3)  : (document.body.clientHeight / rows) * Math.floor((rows-4)/2 )}px`,
-                            overflowY: 'scroll'
+                            height:`${document.body.clientWidth >= 560 ? (document.body.clientHeight / rows) * ((rows-4) - 1)  : (document.body.clientHeight / rows) * Math.floor((rows-4)/2 )}px`,
+                            overflowY: 'hidden'
                         }}
                         className={`${textVanish ? 'about-animateDisappear-0ms' : "about-delay-0ms"} projectbox text-white font-["Rajdhani"]  tracking-normal text-sm md:text-md opacity-100 top-[50%] left-[0%] bg-[rgb(20,20,20,0.8)] border-[var(--g5)] border-[1px] rounded-sm ${document.body.clientWidth <= 560 ? `translate-y-[-16px]` : `translate-y-[-26px]`} pt-0 absolute overflow-visible`}
                     >
                         {project === "kabutops" ? 
-                        <div>
-                        <img className='absolute w-[100%] m-0' src={kabutops}></img>
-                        <p>Kabutops Trumps</p>
-                        <p></p> 
+                        <div className='group opacity-delay-500ms'>
+                            <video className='object-fit h-max m-0 p-0' autoPlay loop muted src={kabutops}/>
+                            <p className='absolute top-0 p-2 pl-3 font-["Orbitron"] tracking-wide w-full text-2xl font-500 bg-[rgb(20,20,20,0.8)]'>Kabutops Trumps</p>
+                            <div className='opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-all duration-100 h-fit w-[100%] absolute bottom-0 p-2'>
+                                <p>A full-stack application, allowing users to collect cards and battle against NPC trainers in 'Top Trumps'-style.</p> 
+                                <p className={`text-lg flex gap-3 items-start md:text-xl font-['Rajdhani'] tracking-normal pb-2`}>   
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="React"><p><SiReact/></p></CyberTooltip>
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="JavaScript"><p><SiJavascript/></p></CyberTooltip>
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="HTML5"><p><SiHtml5/></p></CyberTooltip>
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="CSS3"><p><SiCss3/></p></CyberTooltip>
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="TailwindCSS"><p><SiTailwindcss/></p></CyberTooltip>
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="Material UI"><p><SiMui/></p></CyberTooltip>
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="Java"><p><FaJava/></p></CyberTooltip>
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="Spring Boot"><p><SiSpring/></p></CyberTooltip>
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="PostgreSQL"><p><SiPostgresql/></p></CyberTooltip>
+                                </p>
+                            </div>
                         </div>
                         : <></> }
                               
