@@ -2,7 +2,7 @@ import anime from 'animejs/lib/anime.es.js';
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { IoLogoLinkedin, IoLogoYoutube, IoLogoGithub, IoSquareSharp } from "react-icons/io5";
-import { SiReact, SiJavascript, SiHtml5, SiCss3, SiTailwindcss, SiNextdotjs, SiMui, SiSpring, SiPostgresql } from "react-icons/si"
+import { SiReact, SiJavascript, SiHtml5, SiCss3, SiTailwindcss, SiNextdotjs, SiMui, SiSpring, SiPostgresql, SiGithub } from "react-icons/si"
 import { FaHome, FaJava } from "react-icons/fa"
 import { easings } from 'animejs';
 import { styled } from '@mui/material/styles';
@@ -544,7 +544,7 @@ const TilesHeader = () => {
                         <img className={`absolute object-cover h-[100%] w-[100%] m-0 p-0`} src={kabutops} alt="Kabutops Trumps gameplay, user VS CPU trainer Red"></img>
                         <div className={`group opacity-delay-500ms absolute top-0 left-0 bottom-0 right-0`}>
                             <p className='transition-all duration-100 h-fit scale-y-100 border-b-[1px] border-[var(--g5)] absolute top-0 p-3 pl-4 font-["Orbitron"] tracking-wide w-full text-2xl font-500 bg-[rgb(20,20,20,0.8)] flex flex-row justify-between'><span>Kabutops Trumps</span><span className='float-right my-auto fullscreen text-sm font-["Rajdhani"] text-[var(--g5)] animate-bounce group-hover:opacity-0 transition-all duration-100'>Hover for more</span></p>
-                            <div className='bg-[rgb(20,20,20,0.9)] flex flex-col gap-3 border-t-[1px] border-[var(--g5)] transition-all duration-100 h-fit scale-y-0 group-hover:scale-y-100 group-active:scale-y-100 origin-bottom overflow-y-hidden w-[100%] absolute bottom-0 p-2'>
+                            <div className={`bg-[rgb(20,20,20,0.9)] h-[${document.body.clientWidth >= 560 ? (document.body.clientHeight / rows) * ((rows-4) - 1)  : (document.body.clientHeight / rows) * Math.floor((rows-4)/2 )}px] projectbox flex flex-col gap-3 border-t-[1px] border-[var(--g5)] transition-all duration-100 scale-y-0 group-hover:scale-y-100 group-active:scale-y-100 origin-bottom overflow-y-scroll w-[100%] absolute bottom-0 p-2`}>
                                 <p>A full-stack application, allowing users to collect Pok&eacute;mon cards and battle against NPC trainers in 'Top Trumps'-style. </p>
                                 <p>Java + Spring back-end to create, read and update card and user data, as well as to handle game-logic.</p>
                                 <p>React front-end to enable user to battle against CPU trainers.</p> 
@@ -560,10 +560,16 @@ const TilesHeader = () => {
                                     <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="Spring Boot"><p><SiSpring/></p></CyberTooltip>
                                     <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="PostgreSQL"><p><SiPostgresql/></p></CyberTooltip>
                                 </p>
-                                <p className={`text-lg flex gap-3 items-start text-sm md:text-md font-['Rajdhani'] tracking-normal pb-2`}>
+                                <p className={`flex gap-3 items-start text-sm md:text-md font-['Rajdhani'] tracking-normal pb-2`}>
                                     <span className={`text-[var(--g5)] `}>Collaborators: </span>
                                     <div className='flex flex-col'>
                                         <a>Loshanth Selvanayagam</a><a>Eesaa Sheikh</a><a>Shawn Augustine</a><a>Will Stanistreet</a>
+                                    </div>
+                                </p>
+                                <p className={`flex gap-3 items-start text-sm md:text-md font-['Rajdhani'] tracking-normal pb-2`}>
+                                    <span className={`text-[var(--g5)] `}>Repositories: </span>
+                                    <div className='flex flex-col'>
+                                        <a href="https://github.com/bav-07/Kabutops_Trumps_Backend" target="_blank" rel='noopener noreferrer' className='bg-[rgb(20,20,20,0.8)] w-[100px] h-[50px] flex items-center border-[var(--g5)] text-center border-[1px] rounded-sm'><p className='mx-auto my-auto w-fit text-2xl'><SiGithub/></p></a>
                                     </div>
                                 </p>
                                 
