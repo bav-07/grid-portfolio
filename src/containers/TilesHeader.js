@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom'
 import kabutops from '../images/kabutops.png'
+import notimdb from '../images/notimdb.png'
 
 const TilesHeader = () => {
     
@@ -546,8 +547,22 @@ const TilesHeader = () => {
                             <p className='transition-all duration-100 h-fit scale-y-100 border-b-[1px] border-[var(--g5)] absolute top-0 p-3 pl-4 font-["Orbitron"] tracking-wide w-full text-2xl font-500 bg-[rgb(20,20,20,0.8)] flex flex-row justify-between'><span>Kabutops Trumps</span><span className='float-right my-auto fullscreen text-sm font-["Rajdhani"] text-[var(--g5)] animate-bounce group-hover:opacity-0 transition-all duration-100'>Hover for more</span></p>
                             <div className={`bg-[rgb(20,20,20,0.9)] h-[200px] md:h-[320px] projectbox flex flex-col gap-3 border-t-[1px] border-[var(--g5)] transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-200 scale-y-0 group-hover:scale-y-100 group-active:scale-y-100 origin-bottom overflow-y-scroll w-[100%] absolute bottom-0 p-4`}>
                                 <p>A full-stack application, allowing users to collect Pok&eacute;mon cards and battle against NPC trainers in 'Top Trumps'-style. </p>
-                                <p>Java + Spring back-end to create, read and update card and user data, as well as to handle game-logic.</p>
-                                <p>React front-end to enable user to battle against CPU trainers.</p> 
+                                <p>RESTful API back-end built with Java + Spring, for game logic and CRUD operations. React used for front-end, accompanied with modern CSS framework Tailwind.</p>
+                                <div className='flex gap-5 items-center'>
+                                    <p className={`flex items-start text-sm md:text-md font-['Rajdhani'] pb-0 -mb-4 tracking-normal text-[var(--g5)]`}>Repositories:</p>
+                                    <p className={`flex flex-col items-center gap-1  text-sm md:text-md font-['Rajdhani'] tracking-normal pb-2`}>
+                                        <span className={`text-[var(--g5)] `}>Front-end: </span>
+                                        <div className='flex flex-col'>
+                                            <a href="https://github.com/bav-07/KabutopsTrumpsFrontEnd" target="_blank" rel='noopener noreferrer' className='bg-[rgb(20,20,20,0.8)] hover:bg-[#e5e5e5] hover:text-[rgb(20,20,20)] hover:scale-105 active:scale-95 active:bg-[rgb(180,180,180,0.8)] transition-all duration-150 w-[100px] h-[50px] flex items-center border-[var(--g5)] text-center border-[1px] rounded-sm'><p className='mx-auto my-auto w-fit text-2xl'><SiGithub/></p></a>
+                                        </div>
+                                    </p>
+                                    <p className={`flex flex-col items-center gap-1  text-sm md:text-md font-['Rajdhani'] tracking-normal pb-2`}>
+                                        <span className={`text-[var(--g5)] `}>Back-end: </span>
+                                        <div className='flex flex-col'>
+                                            <a href="https://github.com/bav-07/Kabutops_Trumps_Backend" target="_blank" rel='noopener noreferrer' className='bg-[rgb(20,20,20,0.8)] hover:bg-[#e5e5e5] hover:text-[rgb(20,20,20)] hover:scale-105 active:scale-95 active:bg-[rgb(180,180,180,0.8)] transition-all duration-150 w-[100px] h-[50px] flex items-center border-[var(--g5)] text-center border-[1px] rounded-sm'><p className='mx-auto my-auto w-fit text-2xl'><SiGithub/></p></a>
+                                        </div>
+                                    </p>
+                                </div>
                                 <p className={`text-lg flex gap-3 items-start md:text-xl font-['Rajdhani'] tracking-normal pb-2`}>
                                     <span className={`text-[var(--g5)] text-sm md:text-md`}>Tools:</span>
                                     <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="React"><p><SiReact/></p></CyberTooltip>
@@ -557,30 +572,64 @@ const TilesHeader = () => {
                                     <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="TailwindCSS"><p><SiTailwindcss/></p></CyberTooltip>
                                     <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="Material UI"><p><SiMui/></p></CyberTooltip>
                                     <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="Java"><p><FaJava/></p></CyberTooltip>
-                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="Spring Boot"><p><SiSpring/></p></CyberTooltip>
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="Spring"><p><SiSpring/></p></CyberTooltip>
                                     <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="PostgreSQL"><p><SiPostgresql/></p></CyberTooltip>
                                 </p>
                                 <p className={`flex gap-3 items-start text-sm md:text-md font-['Rajdhani'] tracking-normal pb-2`}>
                                     <span className={`text-[var(--g5)] `}>Collaborators: </span>
                                     <div className='flex flex-col'>
-                                        <a>Loshanth Selvanayagam</a><a>Eesaa Sheikh</a><a>Shawn Augustine</a><a>Will Stanistreet</a>
+                                        <a>Bavaharsan Nagarajah</a><a>Loshanth Selvanayagam</a><a>Eesaa Sheikh</a><a>Shawn Augustine</a><a>Will Stanistreet</a>
                                     </div>
                                 </p>
-                                <p className={`flex items-start text-sm md:text-md font-['Rajdhani'] pb-0 -mb-4 tracking-normal text-[var(--g5)]`}>Repositories:</p>
-                                <div className='flex gap-5 mx-auto'>
-                                <p className={`flex flex-col items-center gap-1  text-sm md:text-md font-['Rajdhani'] tracking-normal pb-2`}>
-                                    <span className={`text-[var(--g5)] `}>Front-end: </span>
-                                    <div className='flex flex-col'>
-                                        <a href="https://github.com/bav-07/KabutopsTrumpsFrontEnd" target="_blank" rel='noopener noreferrer' className='bg-[rgb(20,20,20,0.8)] hover:bg-[#e5e5e5] hover:text-[rgb(20,20,20)] hover:scale-105 active:scale-95 active:bg-[rgb(180,180,180,0.8)] transition-all duration-150 w-[100px] h-[50px] flex items-center border-[var(--g5)] text-center border-[1px] rounded-sm'><p className='mx-auto my-auto w-fit text-2xl'><SiGithub/></p></a>
-                                    </div>
-                                </p>
-                                <p className={`flex flex-col items-center gap-1  text-sm md:text-md font-['Rajdhani'] tracking-normal pb-2`}>
-                                    <span className={`text-[var(--g5)] `}>Back-end: </span>
-                                    <div className='flex flex-col'>
-                                        <a href="https://github.com/bav-07/Kabutops_Trumps_Backend" target="_blank" rel='noopener noreferrer' className='bg-[rgb(20,20,20,0.8)] hover:bg-[#e5e5e5] hover:text-[rgb(20,20,20)] hover:scale-105 active:scale-95 active:bg-[rgb(180,180,180,0.8)] transition-all duration-150 w-[100px] h-[50px] flex items-center border-[var(--g5)] text-center border-[1px] rounded-sm'><p className='mx-auto my-auto w-fit text-2xl'><SiGithub/></p></a>
-                                    </div>
-                                </p>
+                            </div>
+                        </div>
+                        </>
+                        : project === "notimdb" ? 
+                        <>
+                        <img className={`absolute object-cover h-[100%] w-[100%] m-0 p-0`} src={notimdb} alt="notIMDB movies page with list of movies"></img>
+                        <div className={`group opacity-delay-500ms absolute top-0 left-0 bottom-0 right-0`}>
+                            <p className='transition-all duration-100 h-fit scale-y-100 border-b-[1px] border-[var(--g5)] absolute top-0 p-3 pl-4 font-["Orbitron"] tracking-wide w-full text-2xl font-500 bg-[rgb(20,20,20,0.8)] flex flex-row justify-between'><span>notIMDB</span><span className='float-right my-auto fullscreen text-sm font-["Rajdhani"] text-[var(--g5)] animate-bounce group-hover:opacity-0 transition-all duration-100'>Hover for more</span></p>
+                            <div className={`bg-[rgb(20,20,20,0.9)] h-[200px] md:h-[320px] projectbox flex flex-col gap-3 border-t-[1px] border-[var(--g5)] transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-200 scale-y-0 group-hover:scale-y-100 group-active:scale-y-100 origin-bottom overflow-y-scroll w-[100%] absolute bottom-0 p-4`}>
+                                <p>A full-stack application, allowing users to search for and review movies with a star-rating system, with a simple sign-up/log-in functionality.</p>
+                                <p>RESTful API back-end built with Java + Spring, for CRUD operations. React used for front-end, accompanied with modern CSS framework Tailwind.</p>
+                                <div className='flex gap-5 items-center'>
+                                    <p className={`flex items-start text-sm md:text-md font-['Rajdhani'] pb-0 -mb-4 tracking-normal text-[var(--g5)]`}>Repositories:</p>
+                                    <p className={`flex flex-col items-center gap-1  text-sm md:text-md font-['Rajdhani'] tracking-normal pb-2`}>
+                                        <span className={`text-[var(--g5)] `}>Front-end: </span>
+                                        <div className='flex flex-col'>
+                                            <a href="https://github.com/bav-07/json-statham-front-end" target="_blank" rel='noopener noreferrer' className='bg-[rgb(20,20,20,0.8)] hover:bg-[#e5e5e5] hover:text-[rgb(20,20,20)] hover:scale-105 active:scale-95 active:bg-[rgb(180,180,180,0.8)] transition-all duration-150 w-[100px] h-[50px] flex items-center border-[var(--g5)] text-center border-[1px] rounded-sm'><p className='mx-auto my-auto w-fit text-2xl'><SiGithub/></p></a>
+                                        </div>
+                                    </p>
+                                    <p className={`flex flex-col items-center gap-1  text-sm md:text-md font-['Rajdhani'] tracking-normal pb-2`}>
+                                        <span className={`text-[var(--g5)] `}>Back-end: </span>
+                                        <div className='flex flex-col'>
+                                            <a href="https://github.com/bav-07/json-statham-back-end" target="_blank" rel='noopener noreferrer' className='bg-[rgb(20,20,20,0.8)] hover:bg-[#e5e5e5] hover:text-[rgb(20,20,20)] hover:scale-105 active:scale-95 active:bg-[rgb(180,180,180,0.8)] transition-all duration-150 w-[100px] h-[50px] flex items-center border-[var(--g5)] text-center border-[1px] rounded-sm'><p className='mx-auto my-auto w-fit text-2xl'><SiGithub/></p></a>
+                                        </div>
+                                    </p>
                                 </div>
+                                <p className={`text-lg flex gap-3 items-start md:text-xl font-['Rajdhani'] tracking-normal pb-2`}>
+                                    <span className={`text-[var(--g5)] text-sm md:text-md`}>Tools:</span>
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="React"><p><SiReact/></p></CyberTooltip>
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="JavaScript"><p><SiJavascript/></p></CyberTooltip>
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="HTML5"><p><SiHtml5/></p></CyberTooltip>
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="CSS3"><p><SiCss3/></p></CyberTooltip>
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="TailwindCSS"><p><SiTailwindcss/></p></CyberTooltip>
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="Material UI"><p><SiMui/></p></CyberTooltip>
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="Java"><p><FaJava/></p></CyberTooltip>
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="Spring"><p><SiSpring/></p></CyberTooltip>
+                                    <CyberTooltip enterTouchDelay={0} TransitionComponent={Zoom} placement="top" title="PostgreSQL"><p><SiPostgresql/></p></CyberTooltip>
+                                </p>
+                                <p className={`flex gap-3 items-start text-sm md:text-md font-['Rajdhani'] tracking-normal pb-2`}>
+                                    <span className={`text-[var(--g5)] `}>Collaborators: </span>
+                                    <div className={`flex ${(Math.floor((columns - 2) / 2) - 3) >= 8 || document.body.clientWidth <= 560 ? 'flex-row' : 'flex-col'}`}>
+                                        <div className='flex flex-col'>
+                                            <p className='text-[var(--g5)]'>Front-end:</p><a>Bavaharsan Nagarajah</a><a>Loshanth Selvanayagam</a><a>Salma Mounes</a><a>Harry Masini</a>
+                                        </div>
+                                        <div className={`${(Math.floor((columns - 2) / 2) - 3) >= 8  || document.body.clientWidth <= 560 ? 'ml-2' : 'mt-2'} flex flex-col`}>
+                                            <p className={` text-[var(--g5)]`}>Back-end:</p><a>Sara Ahmed</a><a>Saad Ahmed</a><a>Radhika Rathi</a><a>Isabel Martinez de Rituerto</a>
+                                        </div>
+                                    </div>
+                                </p>
                             </div>
                         </div>
                         </>
