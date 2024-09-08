@@ -1,16 +1,19 @@
 {
   "files": {
-    "main.css": "/grid-portfolio/static/css/main.4690352c.css",
-    "main.js": "/grid-portfolio/static/js/main.3fcf239d.js",
-    "static/js/787.48f82f8c.chunk.js": "/grid-portfolio/static/js/787.48f82f8c.chunk.js",
+    "main.css": "/grid-portfolio/static/css/main.21aebc17.css",
+    "main.js": "/grid-portfolio/static/js/main.33dedb4b.js",
+    "static/js/453.51b3387a.chunk.js": "/grid-portfolio/static/js/453.51b3387a.chunk.js",
+    "static/media/kabutops.png": "/grid-portfolio/static/media/kabutops.c036484e90b2b53e60cb.png",
+    "static/media/pokeapi.gif": "/grid-portfolio/static/media/pokeapi.332eb1a944b6efcdf33d.gif",
+    "static/media/notimdb.png": "/grid-portfolio/static/media/notimdb.a160845dc83bfc9f9e9c.png",
     "static/media/logo.svg": "/grid-portfolio/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/grid-portfolio/index.html",
-    "main.4690352c.css.map": "/grid-portfolio/static/css/main.4690352c.css.map",
-    "main.3fcf239d.js.map": "/grid-portfolio/static/js/main.3fcf239d.js.map",
-    "787.48f82f8c.chunk.js.map": "/grid-portfolio/static/js/787.48f82f8c.chunk.js.map"
+    "main.21aebc17.css.map": "/grid-portfolio/static/css/main.21aebc17.css.map",
+    "main.33dedb4b.js.map": "/grid-portfolio/static/js/main.33dedb4b.js.map",
+    "453.51b3387a.chunk.js.map": "/grid-portfolio/static/js/453.51b3387a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4690352c.css",
-    "static/js/main.3fcf239d.js"
+    "static/css/main.21aebc17.css",
+    "static/js/main.33dedb4b.js"
   ]
 }
