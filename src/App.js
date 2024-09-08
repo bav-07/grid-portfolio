@@ -12,6 +12,7 @@ function App() {
         <Route path="/grid-portfolio/about" element={<About/>}/> 
       </Routes>
     </BrowserRouter>
+
   );
 }
 
